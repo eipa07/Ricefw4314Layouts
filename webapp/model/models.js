@@ -14,6 +14,33 @@ function (JSONModel, Device) {
             var oModel = new JSONModel(Device);
             oModel.setDefaultBindingMode("OneWay");
             return oModel;
+        },
+
+        buildMpModel: function(){
+            let oModel = new JSONModel({
+                "noParte": "",
+                "desc": "",
+                "descIngles": "",
+                "categoria": "",
+                "fracAran": "",
+                "faDesperdicio": "",
+                "umComercial": "",
+                "umTarifa": "",
+                "paisDestino": "",
+                "costoUnitario": "",
+                "pesoKG": "",
+                "referencia": "",
+                "observaciones": "",
+                "fechaEstructura": "",
+                "noParteComp": "",
+                "unidadComponente": "",
+                "unidadComponente": "",
+                "cantIncorpodara": "",
+                "cantMerma": "",
+                "cantDesperdicio": "",
+                "fDesde": "",
+                "fHasta": "",
+            })
         }
     };
 

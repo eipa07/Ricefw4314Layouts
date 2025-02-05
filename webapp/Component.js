@@ -21,6 +21,9 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+
+            // set json model for Building MP Excel
+            this.setModel(models.buildMpModel(), "mpModel");
         }
     });
 });

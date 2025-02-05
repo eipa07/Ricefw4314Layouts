@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+
+    <Table
+        id="parnrTable"
+        items="{ path: 'ZZ1_CDS_SEARCH_HELP_PARNR', sorter: { path: 'PARNR' } }"
+        growing="true"
+        growingThreshold="20"
+        visible="true"
+    
+    >
+        <headerToolbar>
+            <Title
+            id="parnrTitle"
+                text="{i18n>fragments.parnr.cliente}"
+                level="H2"
+            />
+        </headerToolbar>
+        <columns>
+            <Column width="50%" demandPopin="true" hAlign="Begin">
+            <Text text="Parnr ID" />
+            </Column>
+            <Column width="50%">
+            <Text text="Parnr Name" />
+            </Column>
+        </columns>
+        
+    </Table>
+</core:FragmentDefinition>

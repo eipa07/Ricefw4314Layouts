@@ -31,12 +31,14 @@
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem id="MainView_FilterGroupItem_05" name="PurchaseOrders" label="{i18n>mainview.purchaseOrders}" groupName="visibleITems" visibleInFilterBar="true">
                                 <fb:control>
-                                    <Input id="MainView_Input_04"/>
+                                    <Input id="parnrVH" placeholder="buscar cliente" showSuggestion="true" showValueHelp="true" suggest="{/ZZ1_CDS_SEARCH_HELP_PARNR}" 
+                                    type="Text" valueHelpRequest="onVHParnrRequest" submit="onSubmit"/> 
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem id="MainView_FilterGroupItem_06" name="Customer" label="{i18n>mainview.customer}" groupName="visibleITems" visibleInFilterBar="true">
                                 <fb:control>
                                     <Input id="MainView_Input_05"/>
+                                    
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem id="MainView_FilterGroupItem_07" name="Supplier" label="{i18n>mainview.supplier}" groupName="visibleITems" visibleInFilterBar="true">

@@ -1,49 +1,129 @@
-<mvc:View controllerName="report.ricefw.controller.MainView"
+<mvc:View
+    controllerName="report.ricefw.controller.MainView"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:table="sap.ui.table"
-	xmlns:f="sap.f"
-    xmlns:fb="sap.ui.comp.filterbar">
-    
-    <f:DynamicPage id="MainView_DynamicPage_01" backgroundDesign="Transparent" fitContent="true">
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+>
+    <f:DynamicPage
+        id="MainView_DynamicPage_01"
+        backgroundDesign="Transparent"
+        fitContent="true"
+    >
         <f:header>
-            <f:DynamicPageHeader id="MainView_DynamicPageHeader_01" backgroundDesign="Transparent">
+            <f:DynamicPageHeader
+                id="MainView_DynamicPageHeader_01"
+                backgroundDesign="Transparent"
+            >
                 <f:content>
-                    <fb:FilterBar id="filterbar" search="onSearchFilters" useToolbar="true">
+                    <fb:FilterBar
+                        id="filterbar"
+                        search="onSearchFilters"
+                        useToolbar="true"
+                    >
                         <fb:filterGroupItems>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_01" name="Dates" label="{i18n>mainview.dates}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_01"
+                                name="Dates"
+                                label="{i18n>mainview.dates}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <DateRangeSelection id="MainView_DateRangeSelection" required="true" placeholder="{i18n>mainview.placeholder1}}">
-
-                                    </DateRangeSelection>
+                                    <DateRangeSelection
+                                        id="MainView_DateRangeSelection"
+                                        required="true"
+                                        placeholder="{i18n>mainview.placeholder1}}"
+                                    />
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_03" name="Invoices" label="{i18n>mainview.invoices}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_03"
+                                name="Invoices"
+                                label="{i18n>mainview.invoices}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <Input id="MainView_Input_02"/>
+                                    <Input id="MainView_Input_02" />
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_04" name="Material" label="{i18n>mainview.material}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_04"
+                                name="Material"
+                                label="{i18n>mainview.material}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <Input id="MainView_Input_03"/>
+                                    <Input id="MainView_Input_03" />
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_05" name="PurchaseOrders" label="{i18n>mainview.purchaseOrders}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_05"
+                                name="PurchaseOrders"
+                                label="{i18n>mainview.purchaseOrders}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <Input id="parnrVH" placeholder="buscar cliente" showSuggestion="true" showValueHelp="true" suggest="{/ZZ1_CDS_SEARCH_HELP_PARNR}" 
-                                    type="Text" valueHelpRequest="onVHParnrRequest" submit="onSubmit"/> 
+                                    <Input id="MainView_Input_05" />
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_06" name="Customer" label="{i18n>mainview.customer}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_06"
+                                name="Customer"
+                                label="{i18n>mainview.customer}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <Input id="MainView_Input_05"/>
-                                    
+                                    <Input
+                                        id="MainView_Input_ParnrVH"
+                                        placeholder="Buscar Cliente"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        suggestionItems="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_PARNR}"
+                                        type="Text"
+                                        valueHelpRequest="onVHParnrRequest"
+                                        submit="onSubmit"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_Parnr"
+                                                text="{LayoutModel>Parnr}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="MainView_FilterGroupItem_07" name="Supplier" label="{i18n>mainview.supplier}" groupName="visibleITems" visibleInFilterBar="true">
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_07"
+                                name="Supplier"
+                                label="{i18n>mainview.supplier}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="true"
+                            >
                                 <fb:control>
-                                    <Input id="MainView_Input_06"/>
+                                    <Input
+                                        id="MainView_Input_LifnrVH"
+                                        placeholder="Buscar Proveedor"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        suggestionItems="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+                                        type="Text"
+                                        valueHelpRequest="onVHPLifnrRequest"
+                                        submit="onSubmit"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_Lifnr"
+                                                text="{LayoutModel>Lifnr}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
                                 </fb:control>
                             </fb:FilterGroupItem>
                         </fb:filterGroupItems>
@@ -54,365 +134,1098 @@
         <f:content>
             <IconTabBar id="MainView_IconTabBar_01">
                 <items>
-                    <IconTabFilter id="MainView_IconTabFilter_01" text="{i18n>mainview.virtual}" key="virtual">
-                        <table:Table id="MainView_Table_01" rows="" selectionMode="None" ariaLabelledBy="title">
+                    <IconTabFilter
+                        id="MainView_IconTabFilter_01"
+                        text="{i18n>mainview.virtual}"
+                        key="virtual"
+                    >
+                        <table:Table
+                            id="MainView_Table_01"
+                            rows=""
+                            selectionMode="None"
+                            ariaLabelledBy="title"
+                        >
                             <table:extension>
-                                <OverflowToolbar id="MainView_OverflowToolbar_01" style="Clear">
-                                    <ToolbarSpacer id="MainView_ToolbarSpacer_01"/>
-                                    <Button id="MainView_Button_01" icon="sap-icon://excel-attachment" type="Transparent" press="getSelectedIndices"/>
+                                <OverflowToolbar
+                                    id="MainView_OverflowToolbar_01"
+                                    style="Clear"
+                                >
+                                    <ToolbarSpacer
+                                        id="MainView_ToolbarSpacer_01"
+                                    />
+                                    <Button
+                                        id="MainView_Button_01"
+                                        icon="sap-icon://excel-attachment"
+                                        type="Transparent"
+                                        press="getSelectedIndices"
+                                    />
                                 </OverflowToolbar>
                             </table:extension>
                             <table:columns>
-                                <table:Column id="MainView_Column_01" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_01" text="{i18n>mainview.virtual.invoice}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_01"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_01"
+                                        text="{i18n>mainview.virtual.invoice}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_01" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_01"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_02" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_02" text="{i18n>mainview.virtual.date}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_02"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_02"
+                                        text="{i18n>mainview.virtual.date}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_02" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_02"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_03" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_03" text="{i18n>mainview.virtual.purchaseOrder}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_03"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_03"
+                                        text="{i18n>mainview.virtual.purchaseOrder}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_03" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_03"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_04" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_04" text="{i18n>mainview.virtual.client}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_04"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_04"
+                                        text="{i18n>mainview.virtual.client}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_04" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_04"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_05" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_05" text="{i18n>mainview.virtual.cuprum}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_05"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_05"
+                                        text="{i18n>mainview.virtual.cuprum}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_05" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_05"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_06" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_06" text="{i18n>mainview.virtual.tariffFraction}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_06"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_06"
+                                        text="{i18n>mainview.virtual.tariffFraction}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_06" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_06"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_07" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_07" text="{i18n>mainview.virtual.description}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_07"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_07"
+                                        text="{i18n>mainview.virtual.description}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_07" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_07"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_08" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_08" text="{i18n>mainview.virtual.descriptionPetition}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_08"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_08"
+                                        text="{i18n>mainview.virtual.descriptionPetition}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_08" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_08"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_09" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_09" text="{i18n>mainview.virtual.pieces}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_09"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_09"
+                                        text="{i18n>mainview.virtual.pieces}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_09" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_09"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_10" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_10" text="{i18n>mainview.virtual.kilos}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_10"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_10"
+                                        text="{i18n>mainview.virtual.kilos}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_10" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_10"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_11" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_11" text="{i18n>mainview.virtual.pounds}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_11"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_11"
+                                        text="{i18n>mainview.virtual.pounds}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_11" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_11"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_12" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_12" text="{i18n>mainview.virtual.meters}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_12"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_12"
+                                        text="{i18n>mainview.virtual.meters}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_12" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_12"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_13" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_13" text="{i18n>mainview.virtual.feets}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_13"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_13"
+                                        text="{i18n>mainview.virtual.feets}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_13" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_13"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_14" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_14" text="{i18n>mainview.virtual.um}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_14"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_14"
+                                        text="{i18n>mainview.virtual.um}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_14" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_14"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_15" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_15" text="{i18n>mainview.virtual.USDunit}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_15"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_15"
+                                        text="{i18n>mainview.virtual.USDunit}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_15" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_15"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_16" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_16" text="{i18n>mainview.virtual.USDtotal}" wrapping="true"/>
+                                <table:Column
+                                    id="MainView_Column_16"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_16"
+                                        text="{i18n>mainview.virtual.USDtotal}"
+                                        wrapping="true"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_16" text="" wrapping="true" />
+                                        <Text
+                                            id="MainView_Text_16"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
                             </table:columns>
                         </table:Table>
                     </IconTabFilter>
-                    <IconTabFilter id="MainView_IconTabFilter_02" text="{i18n>mainview.mp}" key="mp">
-                        <table:Table id="MainView_Table_02" rows="" selectionMode="None" ariaLabelledBy="title">
+                    <IconTabFilter
+                        id="MainView_IconTabFilter_02"
+                        text="{i18n>mainview.mp}"
+                        key="mp"
+                    >
+                        <table:Table
+                            id="MainView_Table_02"
+                            rows=""
+                            selectionMode="None"
+                            ariaLabelledBy="title"
+                        >
                             <table:extension>
-                                <OverflowToolbar id="MainView_OverflowToolbar_02" style="Clear">
-                                    <ToolbarSpacer id="MainView_ToolbarSpacer_02"/>
-                                    <Button id="MainView_Button_02" icon="sap-icon://excel-attachment" type="Transparent" press="getSelectedIndices"/>
+                                <OverflowToolbar
+                                    id="MainView_OverflowToolbar_02"
+                                    style="Clear"
+                                >
+                                    <ToolbarSpacer
+                                        id="MainView_ToolbarSpacer_02"
+                                    />
+                                    <Button
+                                        id="MainView_Button_02"
+                                        icon="sap-icon://excel-attachment"
+                                        type="Transparent"
+                                        press="getSelectedIndices"
+                                    />
                                 </OverflowToolbar>
                             </table:extension>
                             <table:columns>
-                                <table:Column id="MainView_Column_17" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_17" text="{i18n>mainview.mp.parteNumber}"/>
+                                <table:Column
+                                    id="MainView_Column_17"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_17"
+                                        text="{i18n>mainview.mp.parteNumber}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_17" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_17"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_18" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_18" text="{i18n>mainview.mp.description}"/>
+                                <table:Column
+                                    id="MainView_Column_18"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_18"
+                                        text="{i18n>mainview.mp.description}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_18" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_18"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_19" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_19" text="{i18n>mainview.mp.englishDescription}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_19"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_19"
+                                        text="{i18n>mainview.mp.englishDescription}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_19" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_19"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_20" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_20" text="{i18n>mainview.mp.category1}"/>
+                                <table:Column
+                                    id="MainView_Column_20"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_20"
+                                        text="{i18n>mainview.mp.category1}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_20" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_20"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_21" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_21" text="{i18n>mainview.mp.category2}"/>
+                                <table:Column
+                                    id="MainView_Column_21"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_21"
+                                        text="{i18n>mainview.mp.category2}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_21" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_21"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_22" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_22" text="{i18n>mainview.mp.tariffFraction}"/>
+                                <table:Column
+                                    id="MainView_Column_22"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_22"
+                                        text="{i18n>mainview.mp.tariffFraction}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_22" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_22"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_23" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_23" text="{i18n>mainview.mp.wasteFA}"/>
+                                <table:Column
+                                    id="MainView_Column_23"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_23"
+                                        text="{i18n>mainview.mp.wasteFA}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_23" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_23"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_24" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_24" text="{i18n>mainview.mp.comercialUM}"/>
+                                <table:Column
+                                    id="MainView_Column_24"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_24"
+                                        text="{i18n>mainview.mp.comercialUM}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_24" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_24"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_25" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_25" text="{i18n>mainview.mp.tariffUM}"/>
+                                <table:Column
+                                    id="MainView_Column_25"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_25"
+                                        text="{i18n>mainview.mp.tariffUM}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_25" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_25"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_26" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_26" text="{i18n>mainview.mp.typeMP}"/>
+                                <table:Column
+                                    id="MainView_Column_26"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_26"
+                                        text="{i18n>mainview.mp.typeMP}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_26" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_26"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_27" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_27" text="{i18n>mainview.mp.immexCategory}"/>
+                                <table:Column
+                                    id="MainView_Column_27"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_27"
+                                        text="{i18n>mainview.mp.immexCategory}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_27" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_27"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_28" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_28" text="{i18n>mainview.mp.originCountry}"/>
+                                <table:Column
+                                    id="MainView_Column_28"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_28"
+                                        text="{i18n>mainview.mp.originCountry}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_28" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_28"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_29" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_29" text="{i18n>mainview.mp.unitCost}"/>
+                                <table:Column
+                                    id="MainView_Column_29"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_29"
+                                        text="{i18n>mainview.mp.unitCost}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_29" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_29"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_30" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_30" text="{i18n>mainview.mp.kgWeight}"/>
+                                <table:Column
+                                    id="MainView_Column_30"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_30"
+                                        text="{i18n>mainview.mp.kgWeight}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_30" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_30"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_31" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_31" text="{i18n>mainview.mp.reference}"/>
+                                <table:Column
+                                    id="MainView_Column_31"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_31"
+                                        text="{i18n>mainview.mp.reference}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_31" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_31"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_32" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_32" text="{i18n>mainview.mp.observations}"/>
+                                <table:Column
+                                    id="MainView_Column_32"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_32"
+                                        text="{i18n>mainview.mp.observations}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_32" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_32"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
                             </table:columns>
                         </table:Table>
                     </IconTabFilter>
-                    <IconTabFilter id="MainView_IconTabFilter_03" text="{i18n>mainview.pt}" key="notes">
-
-                        <table:Table id="MainView_Table_03" rows="" selectionMode="None" ariaLabelledBy="title">
+                    <IconTabFilter
+                        id="MainView_IconTabFilter_03"
+                        text="{i18n>mainview.pt}"
+                        key="notes"
+                    >
+                        <table:Table
+                            id="MainView_Table_03"
+                            rows=""
+                            selectionMode="None"
+                            ariaLabelledBy="title"
+                        >
                             <table:extension>
-                                <OverflowToolbar id="MainView_OverflowToolbar_03" style="Clear">
-                                    <ToolbarSpacer id="MainView_ToolbarSpacer_03"/>
-                                    <Button id="MainView_Button_03" icon="sap-icon://excel-attachment" type="Transparent" press="getSelectedIndices"/>
+                                <OverflowToolbar
+                                    id="MainView_OverflowToolbar_03"
+                                    style="Clear"
+                                >
+                                    <ToolbarSpacer
+                                        id="MainView_ToolbarSpacer_03"
+                                    />
+                                    <Button
+                                        id="MainView_Button_03"
+                                        icon="sap-icon://excel-attachment"
+                                        type="Transparent"
+                                        press="getSelectedIndices"
+                                    />
                                 </OverflowToolbar>
                             </table:extension>
                             <table:columns>
-                                <table:Column id="MainView_Column_33" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_33" text="{i18n>mainview.pt.parteNumber}"/>
+                                <table:Column
+                                    id="MainView_Column_33"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_33"
+                                        text="{i18n>mainview.pt.parteNumber}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_33" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_33"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_34" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_34" text="{i18n>mainview.pt.description}"/>
+                                <table:Column
+                                    id="MainView_Column_34"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_34"
+                                        text="{i18n>mainview.pt.description}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_34" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_34"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_35" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_35" text="{i18n>mainview.pt.englishDescription}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_35"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_35"
+                                        text="{i18n>mainview.pt.englishDescription}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_35" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_35"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_36" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_36" text="{i18n>mainview.pt.category1}"/>
+                                <table:Column
+                                    id="MainView_Column_36"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_36"
+                                        text="{i18n>mainview.pt.category1}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_36" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_36"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_37" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_37" text="{i18n>mainview.pt.tariffFraction}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_37"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_37"
+                                        text="{i18n>mainview.pt.tariffFraction}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_37" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_37"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_38" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_38" text="{i18n>mainview.pt.wasteFA}"/>
+                                <table:Column
+                                    id="MainView_Column_38"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_38"
+                                        text="{i18n>mainview.pt.wasteFA}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_38" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_38"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_39" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_39" text="{i18n>mainview.pt.comercialUM}"/>
+                                <table:Column
+                                    id="MainView_Column_39"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_39"
+                                        text="{i18n>mainview.pt.comercialUM}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_39" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_39"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_40" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_40" text="{i18n>mainview.pt.tariffUM}"/>
+                                <table:Column
+                                    id="MainView_Column_40"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_40"
+                                        text="{i18n>mainview.pt.tariffUM}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_40" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_40"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_41" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_41" text="{i18n>mainview.pt.destinationCountry}"/>
+                                <table:Column
+                                    id="MainView_Column_41"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_41"
+                                        text="{i18n>mainview.pt.destinationCountry}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_41" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_41"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_42" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_42" text="{i18n>mainview.pt.unitCost}"/>
+                                <table:Column
+                                    id="MainView_Column_42"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_42"
+                                        text="{i18n>mainview.pt.unitCost}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_42" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_42"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_43" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_43" text="{i18n>mainview.pt.kgWeight}"/>
+                                <table:Column
+                                    id="MainView_Column_43"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_43"
+                                        text="{i18n>mainview.pt.kgWeight}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_43" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_43"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_44" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_44" text="{i18n>mainview.pt.reference}"/>
+                                <table:Column
+                                    id="MainView_Column_44"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_44"
+                                        text="{i18n>mainview.pt.reference}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_44" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_44"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_45" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_45" text="{i18n>mainview.pt.observations}"/>
+                                <table:Column
+                                    id="MainView_Column_45"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_45"
+                                        text="{i18n>mainview.pt.observations}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_45" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_45"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_46" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_46" text="{i18n>mainview.pt.dateStructure}"/>
+                                <table:Column
+                                    id="MainView_Column_46"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_46"
+                                        text="{i18n>mainview.pt.dateStructure}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_46" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_46"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_47" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_47" text="{i18n>mainview.pt.componentPartNumber}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_47"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_47"
+                                        text="{i18n>mainview.pt.componentPartNumber}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_47" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_47"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_48" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_48" text="{i18n>mainview.pt.componentUnit}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_48"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_48"
+                                        text="{i18n>mainview.pt.componentUnit}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_48" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_48"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_49" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_49" text="{i18n>mainview.pt.quantityIncorporated}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_49"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_49"
+                                        text="{i18n>mainview.pt.quantityIncorporated}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_49" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_49"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_50" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_50" text="{i18n>mainview.pt.quantityLost}"/>
+                                <table:Column
+                                    id="MainView_Column_50"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_50"
+                                        text="{i18n>mainview.pt.quantityLost}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_50" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_50"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_51" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_52" text="{i18n>mainview.pt.quantityWaste}" wrapping="true" textAlign="Center"/>
+                                <table:Column
+                                    id="MainView_Column_51"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_52"
+                                        text="{i18n>mainview.pt.quantityWaste}"
+                                        wrapping="true"
+                                        textAlign="Center"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_52" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_52"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_53" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_53" text="{i18n>mainview.pt.dateFrom}"/>
+                                <table:Column
+                                    id="MainView_Column_53"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_53"
+                                        text="{i18n>mainview.pt.dateFrom}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_53" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_53"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
-                                <table:Column id="MainView_Column_54" width="8rem" hAlign="Center">
-                                    <Label id="MainView_Label_54" text="{i18n>mainview.pt.dateTo}"/>
+                                <table:Column
+                                    id="MainView_Column_54"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="MainView_Label_54"
+                                        text="{i18n>mainview.pt.dateTo}"
+                                    />
                                     <table:template>
-                                        <Text id="MainView_Text_54" text="" wrapping="true"/>
+                                        <Text
+                                            id="MainView_Text_54"
+                                            text=""
+                                            wrapping="true"
+                                        />
                                     </table:template>
                                 </table:Column>
                             </table:columns>
                         </table:Table>
+                    </IconTabFilter>
 
+                    <IconTabFilter
+                        id="xMainView_IconTabFilter_02"
+                        text="Lifnr"
+                        key="mp"
+                    >
+                        <table:Table
+                            id="lifnrTable2"
+                            rows="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+                        >
+                            <table:extension>
+                                <OverflowToolbar
+                                    id="xMainView_OverflowToolbar_02"
+                                    style="Clear"
+                                >
+                                    <ToolbarSpacer
+                                        id="xMainView_ToolbarSpacer_02"
+                                    />
+                                    <Button
+                                        id="xMainView_Button_02"
+                                        icon="sap-icon://excel-attachment"
+                                        type="Transparent"
+                                        press="getSelectedIndices"
+                                    />
+                                </OverflowToolbar>
+                            </table:extension>
+                            <table:columns>
+                                <table:Column
+                                    id="xMainView_Column_17"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="xMainView_Label_17"
+                                        text="Proveedor"
+                                    />
+                                    <table:template>
+                                        <Text
+                                            id="xMainView_Text_17"
+                                            text="{LayoutModel>Lifnr}"
+                                            wrapping="true"
+                                        />
+                                    </table:template>
+                                </table:Column>
+                                <table:Column
+                                    id="xMainView_Column_18"
+                                    width="8rem"
+                                    hAlign="Center"
+                                >
+                                    <Label
+                                        id="xMainView_Label_18"
+                                        text="nombre"
+                                    />
+                                    <table:template>
+                                        <Text
+                                            id="xMainView_Text_18"
+                                            text="{LayoutModel>LifnrName}"
+                                            wrapping="true"
+                                        />
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
                     </IconTabFilter>
                 </items>
             </IconTabBar>
         </f:content>
     </f:DynamicPage>
-
 </mvc:View>

@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    id="lifnrFragment"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="lifnrSeldial1"
+        title="Proveedor"
+        class="sapUiPopupWithPadding"
+        items="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+        search="onVHpSearchLifnr"
+        confirm="onVHCloseLifnr"
+        cancel="onVHCloseLifnr"
+    >
+        <StandardListItem
+            id="LifnrStdList"
+            iconDensityAware="false"
+            iconInset="false"
+            title="{LayoutModel>Lifnr}"
+            description="{LayoutModel>LifnrName}"
+        />
+    </SelectDialog>
+
+    <!--
+   
+    -->
+</core:FragmentDefinition>

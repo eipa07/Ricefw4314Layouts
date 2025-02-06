@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/sap/ZZ1_SB_LAYOUT_MP/",
+                "uri": "/sap/opu/odata/sap/ZZ1_SB_LAYOUT_MP",
                 "type": "OData",
                 "settings": {
                     "annotations": [],

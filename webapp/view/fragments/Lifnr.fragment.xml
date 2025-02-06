@@ -2,42 +2,40 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
-
     <Table
-        id="parnrTable"
-        items="{ path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_PARNR', sorter: { path: '{LayoutModel>Parnr' } }"
+        id="lifnrTable"
+        items="{ path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR', sorter: { path: '{LayoutModel>Lifnr' } }"
         growing="true"
         growingThreshold="20"
         visible="true"
-    
     >
         <headerToolbar>
             <Title
-                id="parnrTitle"
-                text="{i18n>fragments.parnr}"
+                id="lifnrTitle"
+                text="{i18n>fragments.lifnr}"
                 level="H2"
                 wrappingType="Normal"
             />
         </headerToolbar>
         <columns>
             <Column
-                id="parnrCol1"
+                id="lifnrCol1"
                 width="50%"
                 demandPopin="true"
                 hAlign="Begin"
             >
                 <Text
-                    id="parnrtxt1"
-                    text="{LayoutModel>Parnr}"
+                    id="lifnrtxt1"
+                    text="{LayoutModel>Lifnr}"
                 />
             </Column>
             <Column
-                id="parnrCol2"
+                id="lifnrCol2"
                 width="50%"
             >
                 <Text
-                    id="parnrtxt2"
-                    text="{LayoutModel>ParnrName}"
+                    id="lifnrtxt2"
+                    text="{LayoutModel>LifnrName}"
                 />
             </Column>
         </columns>

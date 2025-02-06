@@ -1,25 +1,29 @@
-<core:FragmentDefinition
+<core:FragmentDefinition id="parnrFragment"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
 
-    <SelectDialog
-        title="Carriers"
+    <SelectDialog id="parnrSeldial1"
+        title="Clientes"
         class="sapUiPopupWithPadding"
-        items="{/ZZ1_CDS_SEARCH_HELP_PARNR}"
-        search="onValueHelpSearch"
-        confirm="onValueHelpClose"
-        cancel="onValueHelpClose"
+        items="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_PARNR}"
+        search="onVHSearchParnr"
+        confirm="onVHCloseParnr"
+        cancel="onVHCloseParnr"
     >
+    <StandardListItem id="parnrStdList"
+        iconDensityAware="false"
+        iconInset="false"
+        title="{LayoutModel>Parnr}"
+        description="{LayoutModel>Parnr}"></StandardListItem>
+   
        
     </SelectDialog>
     
 
     <!--
-     ‹StandardListItem 
-        iconDensityAware="false"
-        iconInset-"false"
-        title="{Carrid}"
-        description="{Carrname}" /›
+   
     -->
+     
+    
 </core:FragmentDefinition>

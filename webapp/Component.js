@@ -1,7 +1,16 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "report/ricefw/model/models"
-], (UIComponent, models) => {
+    "report/ricefw/model/models",
+    "sap/ui/model/json/JSONModel",
+], 
+/**
+ * 
+ * @param {typeof sap.ui.core.UIComponent} UIComponent 
+ * @param {typeof report.ricefw.model.models} models 
+ * @param {typeof sap.ui.model.json.JSONModel} JSONModel 
+ * @returns 
+ */
+(UIComponent, models, JSONModel) => {
     "use strict";
 
     return UIComponent.extend("report.ricefw.Component", {
@@ -24,6 +33,7 @@ sap.ui.define([
 
             // set json model for Building MP Excel
             this.setModel(models.buildMpModel(), "mpModel");
+
         }
     });
 });

@@ -36,6 +36,7 @@
                                         id="MainView_DateRangeSelection"
                                         required="true"
                                         placeholder="{i18n>mainview.placeholder1}}"
+                                        value="{requestModel>/fecha}"
                                     />
                                 </fb:control>
                             </fb:FilterGroupItem>
@@ -44,10 +45,27 @@
                                 name="Invoices"
                                 label="{i18n>mainview.invoices}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="true"
+                                visibleInFilterBar="{requestModel>/visivle_input_invoices}"
                             >
                                 <fb:control>
-                                    <Input id="MainView_Input_02" />
+                                    
+
+                                     <MultiComboBox
+                                        id="MainView_MultiComboBox_02"
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="invoicesSelectionFinish"
+                                        width="auto"
+                                        
+                                        items="{
+                                        path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR',
+                                        sorter: { path: 'Lifnr' }}"
+                                    >
+                                        <core:Item
+                                            id="Item_invoices_01"
+                                            key="{LayoutModel>Lifnr}"
+                                            text="{LayoutModel>LifnrName}"
+                                        />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem
@@ -55,21 +73,40 @@
                                 name="Material"
                                 label="{i18n>mainview.material}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="true"
+                                visibleInFilterBar="{requestModel>/visivle_input_matnr}"
                             >
                                 <fb:control>
-                                    <Input id="MainView_Input_03" />
+                                    <MultiComboBox
+                                        id="MainView_MultiComboBox_01"
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="matnrSelectionFinish"
+                                        width="auto"
+                                        
+                                        items="{
+                                        path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR',
+                                        sorter: { path: 'Lifnr' }}"
+                                    >
+                                        <core:Item
+                                            id="Item_matnr_01"
+                                            key="{LayoutModel>Lifnr}"
+                                            text="{LayoutModel>LifnrName}"
+                                        />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
+
                             <fb:FilterGroupItem
                                 id="MainView_FilterGroupItem_05"
                                 name="PurchaseOrders"
                                 label="{i18n>mainview.purchaseOrders}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="true"
+                                visibleInFilterBar="{requestModel>/visivle_input_po}"
                             >
                                 <fb:control>
-                                    <Input id="MainView_Input_05" />
+                                    <Input
+                                        id="MainView_Input_05"
+                                        value="{requestModel>/Parnr}"
+                                    />
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem
@@ -77,7 +114,7 @@
                                 name="Customer"
                                 label="{i18n>mainview.customer}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="true"
+                                visibleInFilterBar="{requestModel>/visivle_input_Parnr}"
                             >
                                 <fb:control>
                                     <Input
@@ -89,6 +126,7 @@
                                         type="Text"
                                         valueHelpRequest="onVHParnrRequest"
                                         submit="onSubmit"
+                                        value="{requestModel>/Parnr}"
                                     >
                                         <suggestionItems>
                                             <core:Item
@@ -104,7 +142,7 @@
                                 name="Supplier"
                                 label="{i18n>mainview.supplier}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="true"
+                                visibleInFilterBar="{requestModel>/visivle_input_lifnr}"
                             >
                                 <fb:control>
                                     <Input
@@ -116,6 +154,7 @@
                                         type="Text"
                                         valueHelpRequest="onVHPLifnrRequest"
                                         submit="onSubmit"
+                                        value="{requestModel>/lifnr}"
                                     >
                                         <suggestionItems>
                                             <core:Item
@@ -126,18 +165,43 @@
                                     </Input>
                                 </fb:control>
                             </fb:FilterGroupItem>
+
+
+                          <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_99"
+                                name="NumeroParte"
+                                label="{i18n>mainview.numparte}"
+                                groupName="visibleITems"
+                                visibleInFilterBar="{requestModel>/visivle_input_numParte}"
+                            >
+                                <fb:control>
+                                    <Input
+                                        id="MainView_Input_07"
+                                        value="{requestModel>/Parnr}"
+                                    />
+                                    
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+
+
+
                         </fb:filterGroupItems>
                     </fb:FilterBar>
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <IconTabBar id="MainView_IconTabBar_01">
+            <IconTabBar
+                id="MainView_IconTabBar_01"
+                select="_selectLayout"
+                expanded="true"
+            >
                 <items>
                     <IconTabFilter
                         id="MainView_IconTabFilter_01"
                         text="{i18n>mainview.virtual}"
-                        key="virtual"
+                        key="{i18n>mainview.icontab.key.virtual}"
                     >
                         <table:Table
                             id="MainView_Table_01"
@@ -458,7 +522,7 @@
                     <IconTabFilter
                         id="MainView_IconTabFilter_02"
                         text="{i18n>mainview.mp}"
-                        key="mp"
+                        key="{i18n>mainview.icontab.key.mp}"
                     >
                         <table:Table
                             id="MainView_Table_02"
@@ -763,7 +827,7 @@
                     <IconTabFilter
                         id="MainView_IconTabFilter_03"
                         text="{i18n>mainview.pt}"
-                        key="notes"
+                        key="{i18n>mainview.icontab.key.pt}"
                     >
                         <table:Table
                             id="MainView_Table_03"
@@ -1153,70 +1217,6 @@
                                         <Text
                                             id="MainView_Text_54"
                                             text=""
-                                            wrapping="true"
-                                        />
-                                    </table:template>
-                                </table:Column>
-                            </table:columns>
-                        </table:Table>
-                    </IconTabFilter>
-
-                    <IconTabFilter
-                        id="xMainView_IconTabFilter_02"
-                        text="Lifnr"
-                        key="mp"
-                    >
-                        <table:Table
-                            id="lifnrTable2"
-                            rows="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
-                        >
-                            <table:extension>
-                                <OverflowToolbar
-                                    id="xMainView_OverflowToolbar_02"
-                                    style="Clear"
-                                >
-                                    <ToolbarSpacer
-                                        id="xMainView_ToolbarSpacer_02"
-                                    />
-                                    <Button
-                                        id="xMainView_Button_02"
-                                        icon="sap-icon://excel-attachment"
-                                        type="Transparent"
-                                        press="getSelectedIndices"
-                                    />
-                                </OverflowToolbar>
-                            </table:extension>
-                            <table:columns>
-                                <table:Column
-                                    id="xMainView_Column_17"
-                                    width="8rem"
-                                    hAlign="Center"
-                                >
-                                    <Label
-                                        id="xMainView_Label_17"
-                                        text="Proveedor"
-                                    />
-                                    <table:template>
-                                        <Text
-                                            id="xMainView_Text_17"
-                                            text="{LayoutModel>Lifnr}"
-                                            wrapping="true"
-                                        />
-                                    </table:template>
-                                </table:Column>
-                                <table:Column
-                                    id="xMainView_Column_18"
-                                    width="8rem"
-                                    hAlign="Center"
-                                >
-                                    <Label
-                                        id="xMainView_Label_18"
-                                        text="nombre"
-                                    />
-                                    <table:template>
-                                        <Text
-                                            id="xMainView_Text_18"
-                                            text="{LayoutModel>LifnrName}"
                                             wrapping="true"
                                         />
                                     </table:template>

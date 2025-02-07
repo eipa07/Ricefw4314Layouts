@@ -14,7 +14,7 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: DS4DEV
+          destination: DS4120_UnitTest
           url: http://vvhsvfds4ci.sap.cuprum.com:44300
         app:
           name: ZMM_PTPLAYOUTS

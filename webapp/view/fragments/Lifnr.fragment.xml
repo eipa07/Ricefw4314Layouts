@@ -4,7 +4,7 @@
 >
     <Table
         id="lifnrTable"
-        items="{ path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR', sorter: { path: '{LayoutModel>Lifnr' } }"
+        items="{ path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR', sorter: { path: '{LayoutModel>Lifnr}' } }"
         growing="true"
         growingThreshold="20"
         visible="true"

@@ -41,7 +41,8 @@ function (JSONModel, Device) {
                 "fDesde": "",
                 "fHasta": "",
             })
-        }
+        },
+
     };
 
 });

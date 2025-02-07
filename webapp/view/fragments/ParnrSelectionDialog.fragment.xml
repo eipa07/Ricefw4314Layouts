@@ -15,7 +15,7 @@
         iconDensityAware="false"
         iconInset="false"
         title="{LayoutModel>Parnr}"
-        description="{LayoutModel>Parnr}"></StandardListItem>
+        description="{LayoutModel>ParnrDescription}"></StandardListItem>
    
        
     </SelectDialog>

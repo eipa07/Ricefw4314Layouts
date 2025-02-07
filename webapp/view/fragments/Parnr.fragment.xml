@@ -37,7 +37,7 @@
             >
                 <Text
                     id="parnrtxt2"
-                    text="{LayoutModel>ParnrName}"
+                    text="{LayoutModel>ParnrDescription}"
                 />
             </Column>
         </columns>

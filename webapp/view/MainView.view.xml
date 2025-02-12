@@ -35,7 +35,7 @@
                                     <DateRangeSelection
                                         id="MainView_DateRangeSelection"
                                         required="true"
-                                        placeholder="{i18n>mainview.placeholder1}}"
+                                        placeholder="{i18n>mainview.placeholder1}"
                                         value="{requestModel>/fecha}"
                                     />
                                 </fb:control>
@@ -57,13 +57,13 @@
                                         width="auto"
                                         
                                         items="{
-                                        path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR',
-                                        sorter: { path: 'Lifnr' }}"
+                                        path: 'facturasModel>/',
+                                        sorter: { path: 'Factura' }}"
                                     >
                                         <core:Item
                                             id="Item_invoices_01"
-                                            key="{LayoutModel>Lifnr}"
-                                            text="{LayoutModel>LifnrName}"
+                                            key="{facturasModel>Factura}"
+                                            text="{facturasModel>Text}"
                                         />
                                     </MultiComboBox>
                                 </fb:control>
@@ -83,13 +83,13 @@
                                         width="auto"
                                         
                                         items="{
-                                        path: 'LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR',
-                                        sorter: { path: 'Lifnr' }}"
+                                        path: 'materialesModel>/',
+                                        sorter: { path: 'Matnr' }}"
                                     >
                                         <core:Item
                                             id="Item_matnr_01"
-                                            key="{LayoutModel>Lifnr}"
-                                            text="{LayoutModel>LifnrName}"
+                                            key="{materialesModel>Matnr}"
+                                            text="{materialesModel>Text}"
                                         />
                                     </MultiComboBox>
                                 </fb:control>
@@ -177,7 +177,7 @@
                                 <fb:control>
                                     <Input
                                         id="MainView_Input_07"
-                                        value="{requestModel>/Parnr}"
+                                        value="{requestModel>/num_parte}"
                                     />
                                     
                                 </fb:control>
@@ -205,7 +205,7 @@
                     >
                         <table:Table
                             id="MainView_Table_01"
-                            rows=""
+                            rows="{virtualLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
                         >
@@ -221,7 +221,7 @@
                                         id="MainView_Button_01"
                                         icon="sap-icon://excel-attachment"
                                         type="Transparent"
-                                        press="getSelectedIndices"
+                                        press="exportExcel('MainView_Table_01')"
                                     />
                                 </OverflowToolbar>
                             </table:extension>
@@ -239,7 +239,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_01"
-                                            text=""
+                                            text="{virtualLayoutModel>Lifnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -257,7 +257,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_02"
-                                            text=""
+                                            text="{virtualLayoutModel>LifnrName}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -526,7 +526,7 @@
                     >
                         <table:Table
                             id="MainView_Table_02"
-                            rows=""
+                            rows="{mpLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
                         >
@@ -542,7 +542,7 @@
                                         id="MainView_Button_02"
                                         icon="sap-icon://excel-attachment"
                                         type="Transparent"
-                                        press="getSelectedIndices"
+                                        press="exportExcel('MainView_Table_02')"
                                     />
                                 </OverflowToolbar>
                             </table:extension>
@@ -559,7 +559,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_17"
-                                            text=""
+                                            text="{mpLayoutModel>Lifnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -576,7 +576,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_18"
-                                            text=""
+                                            text="{mpLayoutModel>LifnrName}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -831,7 +831,7 @@
                     >
                         <table:Table
                             id="MainView_Table_03"
-                            rows=""
+                            rows="{ptLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
                         >
@@ -847,7 +847,7 @@
                                         id="MainView_Button_03"
                                         icon="sap-icon://excel-attachment"
                                         type="Transparent"
-                                        press="getSelectedIndices"
+                                        press="exportExcel('MainView_Table_03')"
                                     />
                                 </OverflowToolbar>
                             </table:extension>
@@ -864,7 +864,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_33"
-                                            text=""
+                                            text="{ptLayoutModel>Lifnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -900,7 +900,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_35"
-                                            text=""
+                                            text="{ptLayoutModel>Lifnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -917,7 +917,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_36"
-                                            text=""
+                                            text="{virtualLayoutModel>LifnrName}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1224,6 +1224,23 @@
                             </table:columns>
                         </table:Table>
                     </IconTabFilter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </items>
             </IconTabBar>
         </f:content>

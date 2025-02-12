@@ -1,0 +1,83 @@
+[
+    {
+        "label": "No. PARTE",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "DESCRIPCION",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "DESCRIPCION EN INGLES",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "CATEGORIA1",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "CATEGORIA2",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "FRACCION ARANCELARIA",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "FA DE DESPERDICIO",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "UM COMERCIAL",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "UM TARIFA",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "TIPO MP",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "CATEGORIA IMMEX",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "PAIS ORIGEN",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "COSTO UNITARIO",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "PESO EN KGS",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "REFERENCIA",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "OBSERVACIONES",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    }
+]

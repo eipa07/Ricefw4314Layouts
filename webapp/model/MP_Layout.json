@@ -1,0 +1,111 @@
+[
+    {
+        "label": "FRACCION ARANCELARIA",
+        "property": "Lifnr",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "FA DESPERDICIO",
+        "property": "LifnrName",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UM COMERCIAL",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UM COMERCIAL",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UM TARIFA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "PAIS DESTINO",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "COSTO UNITARIO",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Number"
+    },
+    {
+        "label": "PESO EN KGS",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Number",
+        "unit": "kg"
+    },
+    {
+        "label": "REFERENCIA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "OBSERVACIONES",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "FECHA ESTRUCTURA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Date"
+    },
+    {
+        "label": "No. PARTE DEL COMPONENTE",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UNIDAD COMPONENTE",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CANTIDAD INCORPORADA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Number"
+    },
+    {
+        "label": "CANT. MERMA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Number"
+    },
+    {
+        "label": "CANT. DESPERDICIO",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Number"
+    },
+    {
+        "label": "FDESDE",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Date"
+    },
+    {
+        "label": "FHASTA",
+        "property": "Campoooooo",
+        "width": 10,
+        "type": "Date"
+    }
+]

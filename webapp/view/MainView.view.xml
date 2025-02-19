@@ -20,7 +20,7 @@
                 <f:content>
                     <fb:FilterBar
                         id="filterbar"
-                        search="onSearchFilters"
+                        search="onSearchButton"
                         useToolbar="true"
                     >
                         <fb:filterGroupItems>
@@ -36,7 +36,23 @@
                                         id="MainView_DateRangeSelection"
                                         required="true"
                                         placeholder="{i18n>mainview.placeholder1}"
-                                        value="{requestModel>/fecha}"
+                                        value="{
+                                            'type': 'sap.ui.model.type.DateInterval',
+                                            'formatOptions': {
+                                                'pattern': 'yyyy/MM/dd'
+                                            },
+                                            'parts': [
+                                                {
+                                                    'type': 'sap.ui.model.type.Date',
+                                                    'path': '{requestModel>/dateFrom}'
+                                                },
+                                                {
+                                                    'type': 'sap.ui.model.type.Date',
+                                                    'path': '{requestModel>/dateTo}'
+                                                }
+                                            ]
+                                        }"
+                                        change="onDateChange"
                                     />
                                 </fb:control>
                             </fb:FilterGroupItem>
@@ -48,14 +64,12 @@
                                 visibleInFilterBar="{requestModel>/visivle_input_invoices}"
                             >
                                 <fb:control>
-                                    
-
-                                     <MultiComboBox
+                                    <MultiComboBox
                                         id="MainView_MultiComboBox_02"
                                         selectionChange="handleSelectionChange"
                                         selectionFinish="invoicesSelectionFinish"
                                         width="auto"
-                                        
+                                        selectedItems="{requestModel>/invoices}"
                                         items="{
                                         path: 'facturasModel>/',
                                         sorter: { path: 'Factura' }}"
@@ -81,15 +95,14 @@
                                         selectionChange="handleSelectionChange"
                                         selectionFinish="matnrSelectionFinish"
                                         width="auto"
-                                        
                                         items="{
                                         path: 'materialesModel>/',
                                         sorter: { path: 'Matnr' }}"
                                     >
                                         <core:Item
                                             id="Item_matnr_01"
-                                            key="{materialesModel>Matnr}"
-                                            text="{materialesModel>Text}"
+                                            key="{materialesModel>Parnr}"
+                                            text="{materialesModel>Parnr} - {materialesModel>ParnrDescription}"
                                         />
                                     </MultiComboBox>
                                 </fb:control>
@@ -105,7 +118,7 @@
                                 <fb:control>
                                     <Input
                                         id="MainView_Input_05"
-                                        value="{requestModel>/Parnr}"
+                                        value="{requestModel>/invoices}"
                                     />
                                 </fb:control>
                             </fb:FilterGroupItem>
@@ -114,24 +127,24 @@
                                 name="Customer"
                                 label="{i18n>mainview.customer}"
                                 groupName="visibleITems"
-                                visibleInFilterBar="{requestModel>/visivle_input_Parnr}"
+                                visibleInFilterBar="{requestModel>/visivle_input_cliente}"
                             >
                                 <fb:control>
                                     <Input
-                                        id="MainView_Input_ParnrVH"
+                                        id="MainView_Input_Cliente"
                                         placeholder="Buscar Cliente"
                                         showSuggestion="true"
                                         showValueHelp="true"
-                                        suggestionItems="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_PARNR}"
+                                        suggestionItems=""
                                         type="Text"
                                         valueHelpRequest="onVHParnrRequest"
                                         submit="onSubmit"
-                                        value="{requestModel>/Parnr}"
+                                        value="{requestModel>/pendiente_cliente}"
                                     >
                                         <suggestionItems>
                                             <core:Item
-                                                id="MainView_Item_Parnr"
-                                                text="{LayoutModel>Parnr}"
+                                                id="MainView_Item_Cliente"
+                                                text="{LayoutModel>pendiente_clente}"
                                             />
                                         </suggestionItems>
                                     </Input>
@@ -150,25 +163,24 @@
                                         placeholder="Buscar Proveedor"
                                         showSuggestion="true"
                                         showValueHelp="true"
-                                        suggestionItems="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+                                        suggestionItems="{MP_LayoutService>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
                                         type="Text"
-                                        valueHelpRequest="onVHPLifnrRequest"
+                                        valueHelpRequest="onVHLifnrRequest"
                                         submit="onSubmit"
                                         value="{requestModel>/lifnr}"
                                     >
                                         <suggestionItems>
                                             <core:Item
                                                 id="MainView_Item_Lifnr"
-                                                text="{LayoutModel>Lifnr}"
+                                                text="{MP_LayoutService>Lifnr}"
                                             />
                                         </suggestionItems>
                                     </Input>
                                 </fb:control>
                             </fb:FilterGroupItem>
 
-
-                          <fb:FilterGroupItem
-                                id="MainView_FilterGroupItem_99"
+                            <fb:FilterGroupItem
+                                id="MainView_FilterGroupItem_09"
                                 name="NumeroParte"
                                 label="{i18n>mainview.numparte}"
                                 groupName="visibleITems"
@@ -176,16 +188,25 @@
                             >
                                 <fb:control>
                                     <Input
-                                        id="MainView_Input_07"
-                                        value="{requestModel>/num_parte}"
-                                    />
-                                    
+                                        id="MainView_Input_ParnrVH_09"
+                                        value="{requestModel>/parnr}"
+                                        placeholder="Buscar Num. Parte"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        type="Text"
+                                        valueHelpRequest="onVHParnrRequest"
+                                        submit="onSubmit"
+                                        suggestionItems="{MP_LayoutService>/ZZ1_CDS_SEARCH_HELP_PARNR}"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_Parnr"
+                                                text="{MP_LayoutService>Parnr}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
                                 </fb:control>
                             </fb:FilterGroupItem>
-
-
-
-
                         </fb:filterGroupItems>
                     </fb:FilterBar>
                 </f:content>
@@ -205,7 +226,7 @@
                     >
                         <table:Table
                             id="MainView_Table_01"
-                            rows="{virtualLayoutModel>/}"
+                            rows="{veLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
                         >
@@ -215,7 +236,13 @@
                                     style="Clear"
                                 >
                                     <ToolbarSpacer
-                                        id="MainView_ToolbarSpacer_01"
+                                        id="MainView_ToolbarSpacer_clear_01"
+                                    />
+                                    <Button
+                                        id="MainView_Button_clear_01"
+                                        text="Limpiar tabla"
+                                        type="Transparent"
+                                        press="clearTable()"
                                     />
                                     <Button
                                         id="MainView_Button_01"
@@ -239,7 +266,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_01"
-                                            text="{virtualLayoutModel>Lifnr}"
+                                            text="{veLayoutModel>vbeln}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -257,7 +284,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_02"
-                                            text="{virtualLayoutModel>LifnrName}"
+                                            text="{veLayoutModel>fecha}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -275,7 +302,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_03"
-                                            text=""
+                                            text="{veLayoutModel>ebeln}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -293,7 +320,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_04"
-                                            text=""
+                                            text="{veLayoutModel>kunnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -311,7 +338,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_05"
-                                            text=""
+                                            text="{veLayoutModel>parn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -330,7 +357,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_06"
-                                            text=""
+                                            text="{veLayoutModel>ccngn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -348,7 +375,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_07"
-                                            text=""
+                                            text="{veLayoutModel>description_parnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -367,7 +394,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_08"
-                                            text=""
+                                            text="{veLayoutModel>description_ped}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -385,7 +412,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_09"
-                                            text=""
+                                            text="{veLayoutModel>fkimg}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -403,7 +430,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_10"
-                                            text=""
+                                            text="{veLayoutModel>brgew}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -421,7 +448,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_11"
-                                            text=""
+                                            text="{veLayoutModel>menge}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -439,7 +466,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_12"
-                                            text=""
+                                            text="{veLayoutModel>laeng}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -457,7 +484,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_13"
-                                            text=""
+                                            text="{veLayoutModel>menge_ft}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -475,7 +502,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_14"
-                                            text=""
+                                            text="{veLayoutModel>meins}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -493,7 +520,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_15"
-                                            text=""
+                                            text="{veLayoutModel>wavwr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -511,7 +538,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_16"
-                                            text=""
+                                            text="{veLayoutModel>netwr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -539,6 +566,12 @@
                                         id="MainView_ToolbarSpacer_02"
                                     />
                                     <Button
+                                        id="MainView_Button_clear_02"
+                                        text="Limpiar tabla"
+                                        type="Transparent"
+                                        press="clearTable()"
+                                    />
+                                    <Button
                                         id="MainView_Button_02"
                                         icon="sap-icon://excel-attachment"
                                         type="Transparent"
@@ -559,7 +592,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_17"
-                                            text="{mpLayoutModel>Lifnr}"
+                                            text="{mpLayoutModel>Parnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -576,7 +609,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_18"
-                                            text="{mpLayoutModel>LifnrName}"
+                                            text="{mpLayoutModel>description}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -595,7 +628,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_19"
-                                            text=""
+                                            text="{mpLayoutModel>description_en}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -612,7 +645,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_20"
-                                            text=""
+                                            text="{mpLayoutModel>category1}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -629,7 +662,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_21"
-                                            text=""
+                                            text="{mpLayoutModel>category2}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -646,7 +679,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_22"
-                                            text=""
+                                            text="{mpLayoutModel>ccngn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -663,7 +696,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_23"
-                                            text=""
+                                            text="{mpLayoutModel>fa_desper}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -680,7 +713,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_24"
-                                            text=""
+                                            text="{mpLayoutModel>lmein}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -697,7 +730,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_25"
-                                            text=""
+                                            text="{mpLayoutModel>um_tarifa}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -714,7 +747,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_26"
-                                            text=""
+                                            text="{mpLayoutModel>tipo_mp}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -731,7 +764,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_27"
-                                            text=""
+                                            text="{mpLayoutModel>category_immex}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -748,7 +781,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_28"
-                                            text=""
+                                            text="{mpLayoutModel>country}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -765,7 +798,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_29"
-                                            text=""
+                                            text="{mpLayoutModel>netpr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -782,7 +815,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_30"
-                                            text=""
+                                            text="{mpLayoutModel>menge}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -799,7 +832,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_31"
-                                            text=""
+                                            text="{mpLayoutModel>reference}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -816,7 +849,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_32"
-                                            text=""
+                                            text="{mpLayoutModel>observations}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -844,6 +877,12 @@
                                         id="MainView_ToolbarSpacer_03"
                                     />
                                     <Button
+                                        id="MainView_Button_clear_03"
+                                        text="Limpiar tabla"
+                                        type="Transparent"
+                                        press="clearTable()"
+                                    />
+                                    <Button
                                         id="MainView_Button_03"
                                         icon="sap-icon://excel-attachment"
                                         type="Transparent"
@@ -864,7 +903,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_33"
-                                            text="{ptLayoutModel>Lifnr}"
+                                            text="{ptLayoutModel>Parnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -881,7 +920,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_34"
-                                            text=""
+                                            text="{ptLayoutModel>description}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -900,7 +939,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_35"
-                                            text="{ptLayoutModel>Lifnr}"
+                                            text="{ptLayoutModel>description_en}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -917,7 +956,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_36"
-                                            text="{virtualLayoutModel>LifnrName}"
+                                            text="{ptLayoutModel>category1}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -936,7 +975,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_37"
-                                            text=""
+                                            text="{ptLayoutModel>ccngn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -953,7 +992,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_38"
-                                            text=""
+                                            text="{ptLayoutModel>fa_desper}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -970,7 +1009,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_39"
-                                            text=""
+                                            text="{ptLayoutModel>lmein}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -987,7 +1026,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_40"
-                                            text=""
+                                            text="{ptLayoutModel>um_tarifa}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1004,7 +1043,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_41"
-                                            text=""
+                                            text="{ptLayoutModel>country}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1021,7 +1060,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_42"
-                                            text=""
+                                            text="{ptLayoutModel>netpr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1038,7 +1077,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_43"
-                                            text=""
+                                            text="{ptLayoutModel>menge}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1055,7 +1094,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_44"
-                                            text=""
+                                            text="{ptLayoutModel>reference}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1072,7 +1111,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_45"
-                                            text=""
+                                            text="{ptLayoutModel>observations}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1089,7 +1128,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_46"
-                                            text=""
+                                            text="{ptLayoutModel>fecha_es}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1108,7 +1147,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_47"
-                                            text=""
+                                            text="{ptLayoutModel>comp_parnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1127,7 +1166,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_48"
-                                            text=""
+                                            text="{ptLayoutModel>comp_unid}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1146,7 +1185,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_49"
-                                            text=""
+                                            text="{ptLayoutModel>incorp_cant}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1163,7 +1202,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_50"
-                                            text=""
+                                            text="{ptLayoutModel>merma_Cant}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1182,7 +1221,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_52"
-                                            text=""
+                                            text="{ptLayoutModel>desper_Cant}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1199,7 +1238,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_53"
-                                            text=""
+                                            text="{ptLayoutModel>fdesde}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1216,7 +1255,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_54"
-                                            text=""
+                                            text="{ptLayoutModel>f_hasta}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -1224,23 +1263,6 @@
                             </table:columns>
                         </table:Table>
                     </IconTabFilter>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </items>
             </IconTabBar>
         </f:content>

@@ -5,10 +5,10 @@
 >
     <SelectDialog
         id="lifnrSeldial1"
-        title="Proveedor"
+        title="{i18n>fragments.lifnr.title}"
         class="sapUiPopupWithPadding"
-        items="{LayoutModel>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
-        search="onVHpSearchLifnr"
+        items="{MP_LayoutModelService>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+        search="onVHSearchLifnr"
         confirm="onVHCloseLifnr"
         cancel="onVHCloseLifnr"
     >
@@ -16,8 +16,8 @@
             id="LifnrStdList"
             iconDensityAware="false"
             iconInset="false"
-            title="{LayoutModel>Lifnr}"
-            description="{LayoutModel>LifnrName}"
+            title="{MP_LayoutModelService>Lifnr}"
+            description="{MP_LayoutModelService>LifnrName}"
         />
     </SelectDialog>
 

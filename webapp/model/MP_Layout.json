@@ -1,111 +1,99 @@
 [
     {
+        "label": "No. PARTE",
+        "property": "Parnr",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "DESCRIPCION",
+        "property": "description",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "DESCRIPCION EN INGLES",
+        "property": "description_en",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA1",
+        "property": "category1",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA2",
+        "property": "category2",
+        "width": 10,
+        "type": "String"
+    },
+    {
         "label": "FRACCION ARANCELARIA",
-        "property": "Lifnr",
+        "property": "ccngn",
         "width": 10,
         "type": "String"
     },
     {
         "label": "FA DESPERDICIO",
-        "property": "LifnrName",
+        "property": "fa_desper",
         "width": 10,
         "type": "String"
     },
     {
         "label": "UM COMERCIAL",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "String"
-    },
-    {
-        "label": "UM COMERCIAL",
-        "property": "Campoooooo",
+        "property": "lmein",
         "width": 10,
         "type": "String"
     },
     {
         "label": "UM TARIFA",
-        "property": "Campoooooo",
+        "property": "um_tarifa",
         "width": 10,
         "type": "String"
     },
     {
-        "label": "PAIS DESTINO",
-        "property": "Campoooooo",
+        "label": "TIPO MP",
+        "property": "tipo_mp",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA IMMEX",
+        "property": "category_immex",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "PAIS ORIGEN",
+        "property": "country",
         "width": 10,
         "type": "String"
     },
     {
         "label": "COSTO UNITARIO",
-        "property": "Campoooooo",
+        "property": "netpr",
         "width": 10,
         "type": "Number"
     },
     {
         "label": "PESO EN KGS",
-        "property": "Campoooooo",
+        "property": "menge",
         "width": 10,
         "type": "Number",
         "unit": "kg"
     },
     {
         "label": "REFERENCIA",
-        "property": "Campoooooo",
+        "property": "reference",
         "width": 10,
         "type": "String"
     },
     {
         "label": "OBSERVACIONES",
-        "property": "Campoooooo",
+        "property": "observations",
         "width": 10,
         "type": "String"
-    },
-    {
-        "label": "FECHA ESTRUCTURA",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Date"
-    },
-    {
-        "label": "No. PARTE DEL COMPONENTE",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "String"
-    },
-    {
-        "label": "UNIDAD COMPONENTE",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "String"
-    },
-    {
-        "label": "CANTIDAD INCORPORADA",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Number"
-    },
-    {
-        "label": "CANT. MERMA",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Number"
-    },
-    {
-        "label": "CANT. DESPERDICIO",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Number"
-    },
-    {
-        "label": "FDESDE",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Date"
-    },
-    {
-        "label": "FHASTA",
-        "property": "Campoooooo",
-        "width": 10,
-        "type": "Date"
     }
 ]

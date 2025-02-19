@@ -16,8 +16,26 @@
             "toolsId": "f542c2bf-f1fd-4573-8249-6f5431f930e5"
         },
         "dataSources": {
-            "mainService": {
+            "MP_mainSource": {
                 "uri": "/sap/opu/odata/sap/ZZ1_SB_LAYOUT_MP",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "PT_LayoutSource": {
+                "uri": "/sap/opu/odata/sap/ZZ1_SB_LAYOUT_PT",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "VE_LayoutSource": {
+                "uri": "/sap/opu/odata/sap/ZZ1_SB_LAYOUT_EV",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -63,10 +81,26 @@
                     "bundleName": "report.ricefw.i18n.i18n"
                 }
             },
-            "LayoutModel": {
-                "dataSource": "mainService",
+            "MP_LayoutService": {
+                "dataSource": "MP_mainSource",
                 "preload": true,
-                "settings": {}
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "PT_LayoutService": {
+                "dataSource": "PT_LayoutSource",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "VE_LayoutService": {
+                "dataSource": "VE_LayoutSource",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
             }
         },
         "resources": {

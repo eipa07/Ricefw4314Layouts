@@ -5,7 +5,7 @@
 
     <Table
         id="parnrTable"
-        items="{ path: 'MP_LayoutModelService>/ZZ1_CDS_SEARCH_HELP_PARNR', sorter: { path: '{MP_LayoutModelService>Parnr' } }"
+        items="{ path: 'numParteModel>/', sorter: { path: '{numParteModel>Parnr}' }"
         growing="true"
         growingThreshold="20"
         visible="true"
@@ -28,7 +28,7 @@
             >
                 <Text
                     id="parnrtxt1"
-                    text="{MP_LayoutModelService>Parnr}"
+                    text="{numParteModel>Parnr}"
                 />
             </Column>
             <Column
@@ -37,7 +37,7 @@
             >
                 <Text
                     id="parnrtxt2"
-                    text="{MP_LayoutModelService>ParnrDescription}"
+                    text="{numParteModel>ParnrDescription}"
                 />
             </Column>
         </columns>

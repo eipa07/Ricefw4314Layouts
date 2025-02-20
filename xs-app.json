@@ -8,7 +8,7 @@
         {
             "authenticationType": "none",
             "csrfProtection": false,
-            "source": "^/sap/opu/odata/sap/ZZ1_SB_LAYOUT_MP/",
+            "source": "^/sap/opu/odata/sap/ZZ1_SB_LAYOUT_VE/",
             "destination": "DS4120_UnitTest"
         },
         {

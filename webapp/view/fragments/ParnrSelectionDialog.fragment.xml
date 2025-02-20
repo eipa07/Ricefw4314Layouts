@@ -6,7 +6,7 @@
     <SelectDialog id="parnrSeldial1"
         title="{i18n>fragments.cliente.title}"
         class="sapUiPopupWithPadding"
-        items="{MP_LayoutModelService>/ZZ1_CDS_SEARCH_HELP_PARNR}"
+        items="{numParteModel>/}"
         search="onVHSearchParnr"
         confirm="onVHCloseParnr"
         cancel="onVHCloseParnr"
@@ -14,8 +14,8 @@
     <StandardListItem id="parnrStdList"
         iconDensityAware="false"
         iconInset="false"
-        title="{MP_LayoutModelService>Parnr}"
-        description="{MP_LayoutModelService>ParnrDescription}"></StandardListItem>
+        title="{numParteModel>Parnr}"
+        description="{numParteModel>ParnrDescription}"></StandardListItem>
    
        
     </SelectDialog>

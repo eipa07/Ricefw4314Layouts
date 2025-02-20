@@ -40,18 +40,19 @@ sap.ui.define([
                     "fecha": "",
                     "dateFrom": "",
                     "dateTo": "",
-                    "invoices": {},
-                    "matnr": "", // material
-                    "po": "", // Purchase Order - Orden de compra
+                    "invoices": "",
+                    "matnr": "", // material - Parnr
+                    "po": "", // Purchase Order - Orden de compra - ebeln
                     "parnr": "", // Numero de parte
                     "lifnr": "", // Proveedor
-                    "visivle_input_invoices": true,
-                    "visivle_input_matnr": true,
-                    "visivle_input_po": true,
-                    "visivle_input_parnr": true,
-                    "visivle_input_lifnr": false,
-                    "visivle_input_numParte": false,
-                    "visivle_input_cliente": false,
+                    "visible_input_invoices": true,
+                    "visible_input_matnr_ve": true,
+                    "visible_input_matnr_pt": false,
+                    "visible_input_po": true,
+                    "visible_input_parnr": true,
+                    "visible_input_lifnr": false,
+                    "visible_input_numParte_mp": false,
+                    "visible_input_cliente": true,
                     "tableVE": true,
                     "tablePT": false,
                     "tableMP": false
@@ -183,14 +184,19 @@ sap.ui.define([
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
 
                         // Show valid Value Help
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_po", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_invoices", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_matnr", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_Parnr", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_lifnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_po", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_invoices", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_parnr", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_cliente", true);
+                        
 
 
                     } else if (_layout === "MP") {
+
+                        this._loadRemoteOdataServices();
                         // Selected Table
                         this.getView().getModel("requestModel").setProperty("/tableMP", true);
                         this.getView().getModel("requestModel").setProperty("/tablePT", false);
@@ -198,27 +204,30 @@ sap.ui.define([
 
 
                         // Show valid Value Help
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_lifnr", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_numParte", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_po", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_invoices", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_matnr", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_Parnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_parnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_cliente", false);
 
                     } else if (_layout === "PT") {
 
-                        this._loadRemoteOdataServices();
+                        
                         this.getView().getModel("requestModel").setProperty("/tablePT", true);
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
                         this.getView().getModel("requestModel").setProperty("/tableVE", false);
 
                         // Show valid Value Help
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_matnr", true);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_lifnr", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_numParte", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_po", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_invoices", false);
-                        this.getView().getModel("requestModel").setProperty("/visivle_input_Parnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_parnr", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_cliente", false);
                     }
 
                 }
@@ -551,18 +560,18 @@ sap.ui.define([
              */
             _loadRemoteOdataServices: function () {
 
-                var _PT_ModelService = this.getView().getModel("PT_LayoutService");
+                var _MP_ModelService = this.getView().getModel("MP_LayoutService");
                 var _that = this;
                 //var _Virtual_ModelService = this.getView().getModel("Virtual_LayoutModel");
 
 
-                _PT_ModelService.read("/ZZ1_CDS_SEARCH_HELP_PARNR/?", {
+                _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_PARNR/?", {
                     success: function (oData, Result) {
 
                         console.log(oData);
                         let _oModel = new JSONModel();
                         _oModel.setData(oData.results);
-                        _that.getView().setModel(_oModel, "materialesModel");
+                        _that.getView().setModel(_oModel, "numParteModel");
 
                     }, error: function (oError) {
                         console.log(oError);

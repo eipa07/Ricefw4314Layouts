@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    id="Bukrs_MP_Fragment"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="Bukrs_MP_Seldial1"
+        title="{i18n>fragments.bukrs.title}"
+        class="sapUiPopupWithPadding"
+        items="{bukrs_MP_Model>/}"
+        search="onVHSearchBukrs_MP"
+        confirm="onVHCloseBukrs_MP"
+        cancel="onVHCloseBukrs_MP"
+    >
+        <StandardListItem
+            id="Bukrs_MP_StdList"
+            iconDensityAware="false"
+            iconInset="false"
+            title="{bukrs_MP_Model>bukrs}"
+            description="{bukrs_MP_Model>butxt}"
+        />
+    </SelectDialog>
+
+    <!--
+   
+    -->
+</core:FragmentDefinition>

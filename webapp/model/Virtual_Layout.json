@@ -1,42 +1,37 @@
 [
     {
-        "label": "Encabezado del reporte",
-        "property": "Lifnr",
-        "width": 10,
-        "type": "String"
-    },{
         "label": "Factura",
-        "property": "LifnrName",
+        "property": "vbeln",
         "width": 10,
         "type": "String"
     },{
         "label": "Fecha",
-        "property": "xxxxxxxx",
+        "property": "fecha",
         "width": 10,
         "type": "String"
     },{
         "label": "Orden Compra",
-        "property": "xxxxxxxx",
+        "property": "ebeln",
         "width": 10,
         "type": "String"
     },{
         "label": "Cliente",
-        "property": "xxxxxxxx",
+        "property": "kunnr",
         "width": 10,
         "type": "String"
     },{
         "label": "Cuprum",
-        "property": "xxxxxxxx",
+        "property": "Parnr",
         "width": 10,
         "type": "String"
     },{
         "label": "Figura",
-        "property": "xxxxxxxx",
+        "property": "description_parnr",
         "width": 10,
         "type": "String"
     },{
         "label": "Fracción Arancelaria",
-        "property": "xxxxxxxx",
+        "property": "ccngn",
         "width": 10,
         "type": "String"
     },{
@@ -46,52 +41,52 @@
         "type": "String"
     },{
         "label": "Descripción",
-        "property": "xxxxxxxx",
+        "property": "description_parnr",
         "width": 10,
         "type": "String"
     },{
         "label": "Descripcion Pedimento",
-        "property": "xxxxxxxx",
+        "property": "description_ped",
         "width": 10,
         "type": "String"
     },{
         "label": "Piezas",
-        "property": "xxxxxxxx",
+        "property": "fkimg",
         "width": 10,
         "type": "String"
     },{
         "label": "Kilos",
-        "property": "xxxxxxxx",
+        "property": "brgew",
         "width": 10,
         "type": "String"
     },{
         "label": "Libras",
-        "property": "xxxxxxxx",
+        "property": "menge",
         "width": 10,
         "type": "String"
     },{
         "label": "Metros",
-        "property": "xxxxxxxx",
+        "property": "laeng",
         "width": 10,
         "type": "String"
     },{
         "label": "Pies",
-        "property": "xxxxxxxx",
+        "property": "menge_ft",
         "width": 10,
         "type": "String"
     },{
         "label": "UM",
-        "property": "xxxxxxxx",
+        "property": "meabm",
         "width": 10,
         "type": "String"
     },{
         "label": "Unitario USD",
-        "property": "xxxxxxxx",
+        "property": "wavwr",
         "width": 10,
         "type": "String"
     },{
         "label": "Total USD",
-        "property": "xxxxxxxx",
+        "property": "netwr",
         "width": 10,
         "type": "String"
     }

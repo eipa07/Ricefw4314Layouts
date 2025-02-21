@@ -5,7 +5,7 @@
 
     <Table
         id="parnrTable"
-        items="{ path: 'numParteModel>/', sorter: { path: '{numParteModel>Parnr}' }"
+        items="{ path: 'numParte_MP_Model>/', sorter: { path: '{numParte_MP_Model>Parnr}' } }"
         growing="true"
         growingThreshold="20"
         visible="true"
@@ -28,7 +28,7 @@
             >
                 <Text
                     id="parnrtxt1"
-                    text="{numParteModel>Parnr}"
+                    text="{numParte_MP_Model>Parnr}"
                 />
             </Column>
             <Column
@@ -37,7 +37,7 @@
             >
                 <Text
                     id="parnrtxt2"
-                    text="{numParteModel>ParnrDescription}"
+                    text="{numParte_MP_Model>ParnrDescription}"
                 />
             </Column>
         </columns>

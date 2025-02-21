@@ -46,6 +46,7 @@ sap.ui.define([
                     "cliente": "",
                     "parnr": "", // Numero de parte
                     "lifnr": "", // Proveedor
+                    "bukrs": "",
                     "visible_input_invoices": true,
                     "visible_input_matnr_ev": true,
                     "visible_input_matnr_pt": false,
@@ -54,6 +55,9 @@ sap.ui.define([
                     "visible_input_lifnr": false,
                     "visible_input_numParte_mp": false,
                     "visible_input_cliente": true,
+                    "visible_input_bukrs_ev": true,
+                    "visible_input_bukrs_mp": false,
+                    "visible_input_bukrs_pt": false,
                     "tableEV": true,
                     "tablePT": false,
                     "tableMP": false
@@ -173,6 +177,153 @@ sap.ui.define([
                 oEvent.getSource().getBinding("items").filter([]);
             },
 
+            onVHBukrs_EV_Request: function (oEvent) {
+                let sInputValue_Bukrs_EV = oEvent.getSource().getValue();
+                this._bukrs_EV_InputId = oEvent.getSource().getId();
+                if (!this._oVHBukrs_EV_Dialog) {
+                    this._oVHBukrs_EV_Dialog = sap.ui.xmlfragment(
+                        "report.ricefw.view.fragments.Bukrs_EV_SelectionDialog",
+                        this
+                    );
+                    this.getView().addDependent(this._oVHBukrs_EV_Dialog);
+                }
+
+                // Implement filter functionality
+                this._oVHBukrs_EV_Dialog.getBinding("items").filter([new Filter(
+                    "bukrs", FilterOperator.Contains, sInputValue_Bukrs_EV
+                )]);
+
+                this._oVHBukrs_EV_Dialog.open(sInputValue_Bukrs_EV);
+            },
+
+            onVHSearchBukrs_EV: function (oEvent) {
+                let sValue = oEvent.getParameter("value");
+
+                let _parnr = new Filter(
+                    "bukrs", FilterOperator.Contains, sValue
+                );
+                let _parnrName = new Filter(
+                    "butxt", FilterOperator.Contains, sValue
+                );
+
+                var _filters = new Filter({
+                    filters: [_parnr, _parnrName], and: false
+                });
+                oEvent.getSource().getBinding("items").filter([_filters]);
+
+
+            },
+
+            onVHCloseBukrs_EV: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (oSelectedItem) {
+                    var _bukrs_ev = this.getView().byId(this._bukrs_EV_InputId);
+                    _bukrs_ev.setValue(oSelectedItem.getTitle());
+                }
+                oEvent.getSource().getBinding("items").filter([]);
+            },
+
+
+
+            onVHBukrs_MP_Request: function (oEvent) {
+                let sInputValue_Bukrs_MP = oEvent.getSource().getValue();
+                this._bukrs_MP_InputId = oEvent.getSource().getId();
+                if (!this._oVHBukrs_MP_Dialog) {
+                    this._oVHBukrs_MP_Dialog = sap.ui.xmlfragment(
+                        "report.ricefw.view.fragments.Bukrs_MP_SelectionDialog",
+                        this
+                    );
+                    this.getView().addDependent(this._oVHBukrs_MP_Dialog);
+                }
+
+                // Implement filter functionality
+                this._oVHBukrs_MP_Dialog.getBinding("items").filter([new Filter(
+                    "bukrs", FilterOperator.Contains, sInputValue_Bukrs_MP
+                )]);
+
+                this._oVHBukrs_MP_Dialog.open(sInputValue_Bukrs_MP);
+            },
+
+            onVHSearchBukrs_MP: function (oEvent) {
+                let sValue = oEvent.getParameter("value");
+
+                let _parnr = new Filter(
+                    "bukrs", FilterOperator.Contains, sValue
+                );
+                let _parnrName = new Filter(
+                    "butxt", FilterOperator.Contains, sValue
+                );
+
+                var _filters = new Filter({
+                    filters: [_parnr, _parnrName], and: false
+                });
+                oEvent.getSource().getBinding("items").filter([_filters]);
+
+
+            },
+
+            onVHCloseBukrs_MP: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (oSelectedItem) {
+                    var _bukrs_mp = this.getView().byId(this._bukrs_MP_InputId);
+                    _bukrs_mp.setValue(oSelectedItem.getTitle());
+                }
+                oEvent.getSource().getBinding("items").filter([]);
+            },
+
+
+
+            onVHBukrs_PT_Request: function (oEvent) {
+                let sInputValue_Bukrs_PT = oEvent.getSource().getValue();
+                this._bukrs_PT_InputId = oEvent.getSource().getId();
+                if (!this._oVHBukrs_PT_Dialog) {
+                    this._oVHBukrs_PT_Dialog = sap.ui.xmlfragment(
+                        "report.ricefw.view.fragments.Bukrs_PT_SelectionDialog",
+                        this
+                    );
+                    this.getView().addDependent(this._oVHBukrs_PT_Dialog);
+                }
+
+                // Implement filter functionality
+                this._oVHBukrs_PT_Dialog.getBinding("items").filter([new Filter(
+                    "bukrs", FilterOperator.Contains, sInputValue_Bukrs_PT
+                )]);
+
+                this._oVHBukrs_PT_Dialog.open(sInputValue_Bukrs_PT);
+            },
+
+            onVHSearchBukrs_PT: function (oEvent) {
+                let sValue = oEvent.getParameter("value");
+
+                let _parnr = new Filter(
+                    "bukrs", FilterOperator.Contains, sValue
+                );
+                let _parnrName = new Filter(
+                    "butxt", FilterOperator.Contains, sValue
+                );
+
+                var _filters = new Filter({
+                    filters: [_parnr, _parnrName], and: false
+                });
+                oEvent.getSource().getBinding("items").filter([_filters]);
+
+
+            },
+
+            onVHCloseBukrs_PT: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (oSelectedItem) {
+                    var _bukrs_pt = this.getView().byId(this._bukrs_PT_InputId);
+                    _bukrs_pt.setValue(oSelectedItem.getTitle());
+                }
+                oEvent.getSource().getBinding("items").filter([]);
+            },
+
+
+
+
+
+
             _selectLayout: function (oEvent) {
                 let _layout = oEvent.getSource().getSelectedKey()
                 console.log(_layout);
@@ -188,16 +339,20 @@ sap.ui.define([
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_ev", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_parnr", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_cliente", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_mp", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_pt", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", false);
                         
 
 
                     } else if (_layout === "MP") {
 
-                        this._loadRemoteOdataServices();
+                        this._loadRemoteOdataServices(_tabs[1]);
                         // Selected Table
                         this.getView().getModel("requestModel").setProperty("/tableMP", true);
                         this.getView().getModel("requestModel").setProperty("/tablePT", false);
@@ -207,15 +362,19 @@ sap.ui.define([
                         // Show valid Value Help
                         this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_mp", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_parnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_cliente", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_ev", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_pt", false);
 
                     } else if (_layout === "PT") {
 
+                        this._loadRemoteOdataServices(_tabs[2]);
                         
                         this.getView().getModel("requestModel").setProperty("/tablePT", true);
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
@@ -223,12 +382,16 @@ sap.ui.define([
 
                         // Show valid Value Help
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_pt", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_parnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_cliente", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_ev", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_mp", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", false);
                     }
 
                 }
@@ -279,9 +442,9 @@ sap.ui.define([
 
                 if (_validation_flag) {
                     var _filename;
-                    if (!this._oTable) {
-                        this._oTable = this.byId(_layoutId);
-                    }
+                    //if (!this._oTable) {
+                    let _oTable = this.byId(_layoutId);
+                    //}
 
                     if (this.getView().getModel("requestModel").getProperty("/tableEV")) {
                         _filename = "Layout Expo Virtuales.xlsx";
@@ -294,8 +457,8 @@ sap.ui.define([
                         _selectedLayout = _tabs[2];
                     }
 
-                    let oTable = this._oTable;
-                    let oRowBinding = oTable.getBinding("rows");
+                    //let oTable = _oTable;
+                    let oRowBinding = _oTable.getBinding("rows");
                     let aCols = this.getColums(_selectedLayout);
                     let oSettings = {
                         workbook: {
@@ -394,12 +557,14 @@ sap.ui.define([
 
                 // Filters
                 var aFilters = [];
+                var _bukrs = this.getView().getModel("requestModel").getProperty("/bukrs");
 
                 if (_layout === _tabs[0]) {
                     _url = "/ZZ1_CDS_LAYOUT_EV(p_fecha='" + _dateParam + "')/Set?";
                     var _invoices = this.getView().getModel("requestModel").getProperty("/invoices");
                     var _po = this.getView().getModel("requestModel").getProperty("/po");
                     var _materiales = this.getView().getModel("requestModel").getProperty("/material");
+                    var _cliente = this.getView().getModel("requestModel").getProperty("/cliente");
                     
 
                     if(_invoices.length > 0){
@@ -412,15 +577,24 @@ sap.ui.define([
                             aFilters.push(new Filter("ebeln", FilterOperator.EQ, _po[i].ebeln));
                         }
                     }
-                    if(_po.length > 0){
+                    if(_materiales.length > 0){
                         for(let i = 0; i < _po.length; i++){
-                            aFilters.push(new Filter("parn", FilterOperator.EQ, _po[i].Parnr));
+                            aFilters.push(new Filter("parn", FilterOperator.EQ, _materiales[i].Parnr));
                         }
+                    }
+
+                    if(_cliente){
+                        aFilters.push(new Filter("kunnr", FilterOperator.EQ, _cliente));
+                    }
+
+                    if(_bukrs){
+                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
                     }
 
 
                 } else if (_layout === _tabs[1]) {
                     _url = "/ZZ1_CDS_LAYOUT_MP(p_fecha='" + _dateParam + "')/Set?";
+                    
 
                     if (_requestModel.parnr) {
                         aFilters.push(new Filter("Parnr", FilterOperator.EQ, _requestModel.parnr));
@@ -429,14 +603,22 @@ sap.ui.define([
                         aFilters.push(new Filter("Lifnr", FilterOperator.EQ, _requestModel.lifnr));
                     }
 
+                    if(_bukrs){
+                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
+                    }
+
 
                 } else if (_layout === _tabs[2]) {
                     _url = "/ZZ1_CDS_LAYOUT_PT(p_fecha='" + _dateParam + "')/Set?";
-                    var _parnrItems = this.getView().byId("MainView_MultiComboBox_01").getSelectedItems();
+                    var _parnrItems = this.getView().byId("MainView_MultiCB_Material_PT").getSelectedItems();
                     if (_parnrItems.length > 0) {
                         _parnrItems.forEach((element) =>
                             aFilters.push(new Filter("Parnr", FilterOperator.EQ, element.getKey()))
                         );
+                    }
+
+                    if(_bukrs){
+                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
                     }
 
                 }
@@ -540,28 +722,95 @@ sap.ui.define([
 
             /**
              * Call oData Services for PT and Virtual Layouts
-             * 
+             * _tabs[1] => MP
+             * _tabs[2] => PT
              * 
              */
-            _loadRemoteOdataServices: function () {
+            _loadRemoteOdataServices: function (_layout) {
 
-                var _MP_ModelService = this.getView().getModel("MP_LayoutService");
+               
                 var _that = this;
                 //var _Virtual_ModelService = this.getView().getModel("Virtual_LayoutModel");
 
+                if(_layout === _tabs[1]){
+                    /** MP Layout */
 
-                _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_PARNR/?", {
-                    success: function (oData, Result) {
+                    var _MP_ModelService = this.getView().getModel("MP_LayoutService");
 
-                        console.log(oData);
-                        let _oModel = new JSONModel();
-                        _oModel.setData(oData.results);
-                        _that.getView().setModel(_oModel, "numParteModel");
-
-                    }, error: function (oError) {
-                        console.log(oError);
+                    if(!this.getView().getModel("numParte_MP_Model")){
+                        _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_PARNR/?", {
+                            success: function (oData, Result) {
+        
+                                console.log(oData);
+                                let _oModel = new JSONModel();
+                                _oModel.setData(oData.results);
+                                _that.getView().setModel(_oModel, "numParte_MP_Model");
+        
+                            }, error: function (oError) {
+                                console.log(oError);
+                            }
+                        });
                     }
-                });
+
+                    
+
+                    if(!this.getView().getModel("lifnr_MP_Model")){
+                        _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_LIFNR/?", {
+                            success: function (oData, Result) {
+        
+                                console.log(oData);
+                                let _oModel = new JSONModel();
+                                _oModel.setData(oData.results);
+                                _that.getView().setModel(_oModel, "lifnr_MP_Model");
+        
+                            }, error: function (oError) {
+                                console.log(oError);
+                            }
+                        });
+                    }
+
+                    
+
+                    if(!this.getView().getModel("bukrs_MP_Model")){
+                        _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_BUKRS/?", {
+                            success: function (oData, Result) {
+        
+                                console.log(oData);
+                                let _oModel = new JSONModel();
+                                _oModel.setData(oData.results);
+                                _that.getView().setModel(_oModel, "bukrs_MP_Model");
+        
+                            }, error: function (oError) {
+                                console.log(oError);
+                            }
+                        });
+                    }
+
+
+                }else if(_layout === _tabs[2]){
+
+
+                    var _PT_ModelService = this.getView().getModel("PT_LayoutService");
+
+                    if(!this.getView().getModel("bukrs_PT_Model")){
+                        _PT_ModelService.read("/ZZ1_CDS_SEARCH_HELP_BUKRS/?", {
+                            success: function (oData, Result) {
+        
+                                console.log(oData);
+                                let _oModel = new JSONModel();
+                                _oModel.setData(oData.results);
+                                _that.getView().setModel(_oModel, "bukrs_PT_Model");
+        
+                            }, error: function (oError) {
+                                console.log(oError);
+                            }
+                        });
+                    }
+
+                }
+
+
+                
 
 
             },
@@ -598,7 +847,7 @@ sap.ui.define([
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
-                            "key": element.getProperty("key")
+                            "vbeln": element.getProperty("key")
                         })
                     );
                 }
@@ -608,7 +857,7 @@ sap.ui.define([
 
             },
 
-            poSelectionFinish: function(){
+            poSelectionFinish: function(oEvent){
 
                 var selectedItems = oEvent.getParameter("selectedItems");
                 var _items =[];
@@ -616,7 +865,7 @@ sap.ui.define([
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
-                            "key": element.getProperty("key")
+                            "ebeln": element.getProperty("key")
                         })
                     );
                 }
@@ -626,7 +875,7 @@ sap.ui.define([
 
             },
 
-            materialSelectionFinish: function(){
+            materialSelectionFinish: function(oEvent){
 
                 var selectedItems = oEvent.getParameter("selectedItems");
                 var _items =[];
@@ -634,7 +883,7 @@ sap.ui.define([
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
-                            "key": element.getProperty("key")
+                            "Parnr": element.getProperty("key")
                         })
                     );
                 }
@@ -644,7 +893,6 @@ sap.ui.define([
 
             },
 
-            
 
 
 

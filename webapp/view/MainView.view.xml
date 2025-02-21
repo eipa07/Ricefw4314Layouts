@@ -87,12 +87,12 @@
                                 id="MainView_EV_Material_04"
                                 name="Material"
                                 label="{i18n>mainview.material}"
-                                groupName="visibleITems_ve"
-                                visibleInFilterBar="{requestModel>/visible_input_material}"
+                                groupName="visibleITems_ev"
+                                visibleInFilterBar="{requestModel>/visible_input_matnr_ev}"
                             >
                                 <fb:control>
                                     <MultiComboBox
-                                        id="MainView_MultiCB_Material_VE"
+                                        id="MainView_MultiCB_Material_EV"
                                         selectionChange=""
                                         selectionFinish="MaterialSelectionFinish"
                                         placeholder="{i18n>mainview.combobox.material.placeholder}"
@@ -103,7 +103,7 @@
                                         
                                     >
                                         <core:Item
-                                            id="Item_matnr_VE"
+                                            id="Item_matnr_EV"
                                             key="{EV_LayoutService>Parnr}"
                                             text="{EV_LayoutService>ParnrDescription}"
                                         />
@@ -215,7 +215,7 @@
                                         placeholder="Buscar Proveedor"
                                         showSuggestion="true"
                                         showValueHelp="true"
-                                        suggestionItems="{MP_LayoutService>/ZZ1_CDS_SEARCH_HELP_LIFNR}"
+                                        suggestionItems="{lifnr_MP_Model>/}"
                                         type="Text"
                                         valueHelpRequest="onVHLifnrRequest"
                                         submit="onSubmit"
@@ -224,7 +224,7 @@
                                         <suggestionItems>
                                             <core:Item
                                                 id="MainView_Item_Lifnr"
-                                                text="{MP_LayoutService>Lifnr}"
+                                                text="{lifnr_MP_Model>Lifnr}"
                                             />
                                         </suggestionItems>
                                     </Input>
@@ -250,12 +250,104 @@
                                         type="Text"
                                         valueHelpRequest="onVHParnrRequest"
                                         submit="onSubmit_MP"
-                                        suggestionItems="{numParteModel>/}"
+                                        suggestionItems="{numParte_MP_Model>/}"
                                     >
                                         <suggestionItems>
                                             <core:Item
                                                 id="MainView_Item_Parnr_MP"
-                                                text="{numParteModel>ParnrDescription}"
+                                                text="{numParte_MP_Model>ParnrDescription}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+
+
+
+                             <fb:FilterGroupItem
+                                id="MainView_FGI_Bukrs_EV"
+                                name="Bukrs_EV"
+                                label="{i18n>mainview.bukrs}"
+                                groupName="Bukrs_VE"
+                                visibleInFilterBar="{requestModel>/visible_input_bukrs_ev}"
+                            >
+                                <fb:control>
+                                    <Input
+                                        id="MainView_Input_BukrsVH_EV"
+                                        value="{requestModel>/bukrs_ev}"
+                                        placeholder="Buscar Sociedad"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        type="Text"
+                                        valueHelpRequest="onVHBukrs_EV_Request"
+                                        submit="onSubmit_EV"
+                                        suggestionItems="{EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_BUKRS}"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_BUKRS_EV"
+                                                text="{EV_LayoutService>butxt}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+
+                            <fb:FilterGroupItem
+                                id="MainView_FGI_Bukrs_MP"
+                                name="Bukrs_MP"
+                                label="{i18n>mainview.bukrs}"
+                                groupName="Bukrs_MP"
+                                visibleInFilterBar="{requestModel>/visible_input_bukrs_mp}"
+                            >
+                                <fb:control>
+                                    <Input
+                                        id="MainView_Input_BukrsVH_MP"
+                                        value="{requestModel>/bukrs_mp}"
+                                        placeholder="Buscar Sociedad"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        type="Text"
+                                        valueHelpRequest="onVHBukrs_MP_Request"
+                                        submit="onSubmit_MP"
+                                        suggestionItems="{bukrs_MP_Model>/}"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_BUKRS_MP"
+                                                text="{bukrs_MP_Model>butxt}"
+                                            />
+                                        </suggestionItems>
+                                    </Input>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+
+                            <fb:FilterGroupItem
+                                id="MainView_FGI_Bukrs_PT"
+                                name="Bukrs_PT"
+                                label="{i18n>mainview.bukrs}"
+                                groupName="Bukrs_PT"
+                                visibleInFilterBar="{requestModel>/visible_input_bukrs_pt}"
+                            >
+                                <fb:control>
+                                    <Input
+                                        id="MainView_Input_BukrsVH_PT"
+                                        value="{requestModel>/bukrs_pt}"
+                                        placeholder="Buscar Sociedad"
+                                        showSuggestion="true"
+                                        showValueHelp="true"
+                                        type="Text"
+                                        valueHelpRequest="onVHBukrs_PT_Request"
+                                        submit="onSubmit_PT"
+                                        suggestionItems="{bukrs_PT_Model>/}"
+                                    >
+                                        <suggestionItems>
+                                            <core:Item
+                                                id="MainView_Item_BUKRS_PT"
+                                                text="{bukrs_PT_Model>butxt}"
                                             />
                                         </suggestionItems>
                                     </Input>

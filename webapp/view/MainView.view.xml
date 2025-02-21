@@ -66,19 +66,19 @@
                                 <fb:control>
                                     <MultiComboBox
                                         id="MainView_MultiComboBox_02"
-                                        selectionChange="handleSelectionChange"
+                                        selectionChange=""
                                         selectionFinish="invoicesSelectionFinish"
                                         placeholder="{i18n>mainview.combobox.facturas.placeholder}"
                                         width="auto"
                                         selectedItems="{requestModel>/invoices}"
                                         items="{
-                                        path: 'VE_LayoutService>/ZZ1_CDS_SEARCH_HELP_VBELN',
+                                        path: 'EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_VBELN',
                                         sorter: { path: 'vbeln' }}"
                                     >
                                         <core:Item
                                             id="Item_invoices_01"
-                                            key="{VE_LayoutService>vbeln}"
-                                            text="{VE_LayoutService>vbeln}"
+                                            key="{EV_LayoutService>vbeln}"
+                                            text="{EV_LayoutService>vbeln}"
                                         />
                                     </MultiComboBox>
                                 </fb:control>
@@ -88,24 +88,24 @@
                                 name="Material"
                                 label="{i18n>mainview.material}"
                                 groupName="visibleITems_ve"
-                                visibleInFilterBar="{requestModel>/visible_input_matnr_ve}"
+                                visibleInFilterBar="{requestModel>/visible_input_material}"
                             >
                                 <fb:control>
                                     <MultiComboBox
                                         id="MainView_MultiCB_Material_VE"
-                                        selectionChange="handleSelectionChange"
-                                        selectionFinish="matnrSelectionFinish"
+                                        selectionChange=""
+                                        selectionFinish="MaterialSelectionFinish"
                                         placeholder="{i18n>mainview.combobox.material.placeholder}"
                                         width="auto"
                                         items="{
-                                        path: 'VE_LayoutService>/ZZ1_CDS_SEARCH_HELP_PARNR',
+                                        path: 'EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_PARNR',
                                         sorter: { path: 'Parnr' }}"
                                         
                                     >
                                         <core:Item
                                             id="Item_matnr_VE"
-                                            key="{VE_LayoutService>Parnr}"
-                                            text="{VE_LayoutService>ParnrDescription}"
+                                            key="{EV_LayoutService>Parnr}"
+                                            text="{EV_LayoutService>ParnrDescription}"
                                         />
                                     </MultiComboBox>
                                   
@@ -124,8 +124,8 @@
                                    
                                     <MultiComboBox
                                         id="MainView_MultiCB_Material_PT"
-                                        selectionChange="handleSelectionChange"
-                                        selectionFinish="matnrSelectionFinish"
+                                        
+                                        selectionFinish="materialSelectionFinish"
                                         width="auto"
                                         items="{
                                         path: 'PT_LayoutService>/ZZ1_CDS_SEARCH_HELP_PARNR',
@@ -157,17 +157,17 @@
                                      <MultiComboBox
                                         id="MainView_MultiComboBox_05"
                                         selectionChange="handleSelectionChange"
-                                        selectionFinish="matnrSelectionFinish"
+                                        selectionFinish="poSelectionFinish"
                                         placeholder="{i18n>mainview.combobox.po.placeholder}"
                                         width="auto"
                                         items="{
-                                        path: 'VE_LayoutService>/ZZ1_CDS_SEARCH_HELP_EBELN',
+                                        path: 'EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_EBELN',
                                         sorter: { path: 'ebeln' }}"
                                     >
                                         <core:Item
                                             id="Item_matnr_05"
-                                            key="{VE_LayoutService>ebeln}"
-                                            text="{VE_LayoutService>ebeln}"
+                                            key="{EV_LayoutService>ebeln}"
+                                            text="{EV_LayoutService>ebeln}"
                                         />
                                     </MultiComboBox>
 
@@ -189,15 +189,14 @@
                                         placeholder="{i18n>mainview.combobox.cliente.placeholder}"
                                         showSuggestion="true"
                                         showValueHelp="false"
-                                        suggestionItems="{VE_LayoutService>/ZZ1_CDS_SEARCH_HELP_KUNNR}"
+                                        suggestionItems="{EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_KUNNR}"
                                         type="Text"
-                                        submit="onSubmit"
-                                        value="{requestModel>/pendiente_cliente}"
+                                        value="{requestModel>/cliente}"
                                     >
                                         <suggestionItems>
                                             <core:Item
                                                 id="MainView_Item_Cliente"
-                                                text="{VE_LayoutService>kunnr}"
+                                                text="{EV_LayoutService>kunnr}"
                                             />
                                         </suggestionItems>
                                     </Input>
@@ -288,7 +287,7 @@
                     <!--Virtual Table-->
                         <table:Table
                             id="MainView_Table_01"
-                            rows="{veLayoutModel>/}"
+                            rows="{evLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
                         >
@@ -328,7 +327,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_01"
-                                            text="{VE_LayoutService>vbeln}"
+                                            text="{evLayoutModel>vbeln}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -346,7 +345,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_02"
-                                            text="{veLayoutModel>fecha}"
+                                            text="{evLayoutModel>fecha}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -364,7 +363,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_03"
-                                            text="{veLayoutModel>ebeln}"
+                                            text="{evLayoutModel>ebeln}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -382,7 +381,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_04"
-                                            text="{veLayoutModel>kunnr}"
+                                            text="{evLayoutModel>kunnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -400,7 +399,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_05"
-                                            text="{veLayoutModel>parn}"
+                                            text="{evLayoutModel>parn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -419,7 +418,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_06"
-                                            text="{veLayoutModel>ccngn}"
+                                            text="{evLayoutModel>ccngn}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -437,7 +436,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_07"
-                                            text="{veLayoutModel>description_parnr}"
+                                            text="{evLayoutModel>description_parnr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -456,7 +455,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_08"
-                                            text="{veLayoutModel>description_ped}"
+                                            text="{evLayoutModel>description_ped}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -474,7 +473,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_09"
-                                            text="{veLayoutModel>fkimg}"
+                                            text="{evLayoutModel>fkimg}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -492,7 +491,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_10"
-                                            text="{veLayoutModel>brgew}"
+                                            text="{evLayoutModel>brgew}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -510,7 +509,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_11"
-                                            text="{veLayoutModel>menge}"
+                                            text="{evLayoutModel>menge}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -528,7 +527,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_12"
-                                            text="{veLayoutModel>laeng}"
+                                            text="{evLayoutModel>laeng}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -546,7 +545,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_13"
-                                            text="{veLayoutModel>menge_ft}"
+                                            text="{evLayoutModel>menge_ft}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -564,7 +563,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_14"
-                                            text="{veLayoutModel>meins}"
+                                            text="{evLayoutModel>meins}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -582,7 +581,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_15"
-                                            text="{veLayoutModel>wavwr}"
+                                            text="{evLayoutModel>wavwr}"
                                             wrapping="true"
                                         />
                                     </table:template>
@@ -600,7 +599,7 @@
                                     <table:template>
                                         <Text
                                             id="MainView_Text_16"
-                                            text="{veLayoutModel>netwr}"
+                                            text="{evLayoutModel>netwr}"
                                             wrapping="true"
                                         />
                                     </table:template>

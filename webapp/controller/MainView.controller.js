@@ -40,20 +40,21 @@ sap.ui.define([
                     "fecha": "",
                     "dateFrom": "",
                     "dateTo": "",
-                    "invoices": "",
-                    "matnr": "", // material - Parnr
-                    "po": "", // Purchase Order - Orden de compra - ebeln
+                    "invoices": [],
+                    "material": [], // material - Parnr
+                    "po": [], // Purchase Order - Orden de compra - ebeln
+                    "cliente": "",
                     "parnr": "", // Numero de parte
                     "lifnr": "", // Proveedor
                     "visible_input_invoices": true,
-                    "visible_input_matnr_ve": true,
+                    "visible_input_matnr_ev": true,
                     "visible_input_matnr_pt": false,
                     "visible_input_po": true,
                     "visible_input_parnr": true,
                     "visible_input_lifnr": false,
                     "visible_input_numParte_mp": false,
                     "visible_input_cliente": true,
-                    "tableVE": true,
+                    "tableEV": true,
                     "tablePT": false,
                     "tableMP": false
 
@@ -63,7 +64,7 @@ sap.ui.define([
                 var _mpLayoutModel = new sap.ui.model.json.JSONModel();
                 var _ptLayoutModel = new sap.ui.model.json.JSONModel();
                 var _virtualLayoutModel = new sap.ui.model.json.JSONModel();
-                var _materialesModel = new sap.ui.model.json.JSONModel();
+                //var _materialesModel = new sap.ui.model.json.JSONModel();
                 var _facturasModel = new sap.ui.model.json.JSONModel();
 
                 _mpLayoutModel.loadData("./model/MP_Layout.json", false);
@@ -75,7 +76,7 @@ sap.ui.define([
                 this.getView().setModel(_mpLayoutModel, "mpColumsModel");
                 this.getView().setModel(_ptLayoutModel, "ptColumnsModel");
                 this.getView().setModel(_virtualLayoutModel, "veColumnsModel");
-                this.getView().setModel("materialesModel");
+                //this.getView().setModel("materialesModel");
                 this.getView().setModel(_facturasModel, "facturasModel");
 
 
@@ -179,14 +180,14 @@ sap.ui.define([
                 if (_tabs.filter(function (e) { return e === _layout }).length > 0) {
                     console.log(true);
                     if (_layout === "VIRTUAL") {
-                        this.getView().getModel("requestModel").setProperty("/tableVE", true);
+                        this.getView().getModel("requestModel").setProperty("/tableEV", true);
                         this.getView().getModel("requestModel").setProperty("/tablePT", false);
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
 
                         // Show valid Value Help
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", true);
-                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", true);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_parnr", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
@@ -200,7 +201,7 @@ sap.ui.define([
                         // Selected Table
                         this.getView().getModel("requestModel").setProperty("/tableMP", true);
                         this.getView().getModel("requestModel").setProperty("/tablePT", false);
-                        this.getView().getModel("requestModel").setProperty("/tableVE", false);
+                        this.getView().getModel("requestModel").setProperty("/tableEV", false);
 
 
                         // Show valid Value Help
@@ -208,7 +209,7 @@ sap.ui.define([
                         this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", true);
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
-                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_parnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_cliente", false);
@@ -218,11 +219,11 @@ sap.ui.define([
                         
                         this.getView().getModel("requestModel").setProperty("/tablePT", true);
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
-                        this.getView().getModel("requestModel").setProperty("/tableVE", false);
+                        this.getView().getModel("requestModel").setProperty("/tableEV", false);
 
                         // Show valid Value Help
                         this.getView().getModel("requestModel").setProperty("/visible_input_matnr_pt", true);
-                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ve", false);
+                        this.getView().getModel("requestModel").setProperty("/visible_input_matnr_ev", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_lifnr", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_po", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_invoices", false);
@@ -282,7 +283,7 @@ sap.ui.define([
                         this._oTable = this.byId(_layoutId);
                     }
 
-                    if (this.getView().getModel("requestModel").getProperty("/tableVE")) {
+                    if (this.getView().getModel("requestModel").getProperty("/tableEV")) {
                         _filename = "Layout Expo Virtuales.xlsx";
                         _selectedLayout = _tabs[0];
                     } else if (this.getView().getModel("requestModel").getProperty("/tableMP")) {
@@ -348,7 +349,7 @@ sap.ui.define([
                         _oModel.setData(oData.results);
 
                         if (_layout === _tabs[0]) {
-                            _that.getView().setModel(_oModel, "veLayoutModel");
+                            _that.getView().setModel(_oModel, "evLayoutModel");
                         } else if (_layout === _tabs[1]) {
                             _that.getView().setModel(_oModel, "mpLayoutModel");
                         } else if (_layout === _tabs[2]) {
@@ -396,6 +397,26 @@ sap.ui.define([
 
                 if (_layout === _tabs[0]) {
                     _url = "/ZZ1_CDS_LAYOUT_EV(p_fecha='" + _dateParam + "')/Set?";
+                    var _invoices = this.getView().getModel("requestModel").getProperty("/invoices");
+                    var _po = this.getView().getModel("requestModel").getProperty("/po");
+                    var _materiales = this.getView().getModel("requestModel").getProperty("/material");
+                    
+
+                    if(_invoices.length > 0){
+                        for(let i = 0; i < _invoices.length; i++){
+                            aFilters.push(new Filter("vbeln", FilterOperator.EQ, _invoices[i].vbeln));
+                        }
+                    }
+                    if(_po.length > 0){
+                        for(let i = 0; i < _po.length; i++){
+                            aFilters.push(new Filter("ebeln", FilterOperator.EQ, _po[i].ebeln));
+                        }
+                    }
+                    if(_po.length > 0){
+                        for(let i = 0; i < _po.length; i++){
+                            aFilters.push(new Filter("parn", FilterOperator.EQ, _po[i].Parnr));
+                        }
+                    }
 
 
                 } else if (_layout === _tabs[1]) {
@@ -437,9 +458,9 @@ sap.ui.define([
                 var _oModelLayout;
 
                 if (_validation_flag) {
-                    if (this.getView().getModel("requestModel").getProperty("/tableVE")) {
+                    if (this.getView().getModel("requestModel").getProperty("/tableEV")) {
                         // set Model features
-                        _oModelLayout = this.getView().getModel("VE_LayoutService");
+                        _oModelLayout = this.getView().getModel("EV_LayoutService");
                         if (this.getView().getModel("mpLayoutModel")) {
                             this.getView().getModel("mpLayoutModel").setData();
                         }
@@ -453,8 +474,8 @@ sap.ui.define([
                         // set Model features
                         _oModelLayout = this.getView().getModel("MP_LayoutService");
 
-                        if (this.getView().getModel("veLayoutModel")) {
-                            this.getView().getModel("veLayoutModel").setData();
+                        if (this.getView().getModel("evLayoutModel")) {
+                            this.getView().getModel("evLayoutModel").setData();
                         }
                         if (this.getView().getModel("ptLayoutModel")) {
                             this.getView().getModel("ptLayoutModel").setData();
@@ -464,8 +485,8 @@ sap.ui.define([
                     } if (this.getView().getModel("requestModel").getProperty("/tablePT")) {
                         // set Model features
                         _oModelLayout = this.getView().getModel("PT_LayoutService");
-                        if (this.getView().getModel("veLayoutModel")) {
-                            this.getView().getModel("veLayoutModel").setData();
+                        if (this.getView().getModel("evLayoutModel")) {
+                            this.getView().getModel("evLayoutModel").setData();
                         }
                         if (this.getView().getModel("mpLayoutModel")) {
                             this.getView().getModel("mpLayoutModel").setData();
@@ -497,42 +518,6 @@ sap.ui.define([
                 return _return;
             },
 
-
-            /**
-             * set filters by selected layout
-             */
-            setFilters: function () {
-
-                var aFilters = this.setFilters();
-
-
-
-                aFilters.push(new Filter("Lifnr", FilterOperator.EQ, "1"));
-                aFilters.push(new Filter("Lifnr", FilterOperator.EQ, "2"));
-                aFilters.push(new Filter("Lifnr", FilterOperator.EQ, "11"));
-
-
-                if (this.getView().getModel("requestModel").getProperty("/tableVE")) {
-
-
-
-                } else if (this.getView().getModel("requestModel").getProperty("/tableMP")) {
-
-
-                    let _lifnr = this.getView().getModel("requestModel").getProperty("/lifnr");
-                    if (_lifnr) {
-                        aFilters.push(new Filter("Lifnr", FilterOperator.EQ, _lifnr));
-                    }
-
-
-                } if (this.getView().getModel("requestModel").getProperty("/tablePT")) {
-
-
-
-
-                }
-
-            },
 
             onDateChange: function (oEvent) {
                 var sFrom = oEvent.getParameter("from"),
@@ -583,10 +568,10 @@ sap.ui.define([
 
             clearTable: function (_tableID) {
 
-                if (this.getView().getModel("requestModel").getProperty("/tableVE")) {
+                if (this.getView().getModel("requestModel").getProperty("/tableEV")) {
 
-                    if (this.getView().getModel("veLayoutModel")) {
-                        this.getView().getModel("veLayoutModel").setData();
+                    if (this.getView().getModel("evLayoutModel")) {
+                        this.getView().getModel("evLayoutModel").setData();
                     }
 
                 } else if (this.getView().getModel("requestModel").getProperty("/tableMP")) {
@@ -603,7 +588,63 @@ sap.ui.define([
 
                 }
 
-            }
+            },
+
+            invoicesSelectionFinish: function(oEvent){
+
+                var selectedItems = oEvent.getParameter("selectedItems");
+                var _items =[];
+                
+                if (selectedItems.length > 0) {
+                    selectedItems.forEach((element) =>
+                        _items.push({
+                            "key": element.getProperty("key")
+                        })
+                    );
+                }
+
+                this.getView().getModel("requestModel").setProperty("/invoices", []);
+                this.getView().getModel("requestModel").setProperty("/invoices", _items);
+
+            },
+
+            poSelectionFinish: function(){
+
+                var selectedItems = oEvent.getParameter("selectedItems");
+                var _items =[];
+                
+                if (selectedItems.length > 0) {
+                    selectedItems.forEach((element) =>
+                        _items.push({
+                            "key": element.getProperty("key")
+                        })
+                    );
+                }
+
+                this.getView().getModel("requestModel").setProperty("/po", []);
+                this.getView().getModel("requestModel").setProperty("/po", _items);
+
+            },
+
+            materialSelectionFinish: function(){
+
+                var selectedItems = oEvent.getParameter("selectedItems");
+                var _items =[];
+                
+                if (selectedItems.length > 0) {
+                    selectedItems.forEach((element) =>
+                        _items.push({
+                            "key": element.getProperty("key")
+                        })
+                    );
+                }
+
+                this.getView().getModel("requestModel").setProperty("/material", []);
+                this.getView().getModel("requestModel").setProperty("/material", _items);
+
+            },
+
+            
 
 
 

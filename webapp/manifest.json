@@ -81,7 +81,7 @@
                     "bundleName": "report.ricefw.i18n.i18n"
                 }
             },
-            "VE_LayoutService": {
+            "EV_LayoutService": {
                 "dataSource": "VE_mainSource",
                 "preload": true,
                 "settings": {

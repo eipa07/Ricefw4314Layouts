@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Table
+        id="lifnrTable"
+        items="{ path: 'lifnr_MP_Model>/', sorter: { path: '{lifnr_MP_Model>Lifnr}' } }"
+        growing="true"
+        growingThreshold="20"
+        visible="true"
+    >
+        <headerToolbar>
+            <Title
+                id="lifnrTitle"
+                text="{i18n>fragments.lifnr}"
+                level="H2"
+                wrappingType="Normal"
+            />
+        </headerToolbar>
+        <columns>
+            <Column
+                id="lifnrCol1"
+                width="50%"
+                demandPopin="true"
+                hAlign="Begin"
+            >
+                <Text
+                    id="lifnrtxt1"
+                    text="{lifnr_MP_Model>Lifnr}"
+                />
+            </Column>
+            <Column
+                id="lifnrCol2"
+                width="50%"
+            >
+                <Text
+                    id="lifnrtxt2"
+                    text="{lifnr_MP_Model>LifnrName}"
+                />
+            </Column>
+        </columns>
+    </Table>
+</core:FragmentDefinition>

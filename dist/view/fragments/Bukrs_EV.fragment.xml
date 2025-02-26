@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Table
+        id="Bukrs_EV_Table"
+        items="{ path: 'EV_LayoutModelService>/ZZ1_CDS_SEARCH_HELP_BUKRS', sorter: { path: '{EV_LayoutModelService>bukrs}' } }"
+        growing="true"
+        growingThreshold="20"
+        visible="true"
+    >
+        <headerToolbar>
+            <Title
+                id="Bukrs_EV_Title"
+                text="{i18n>fragments.bukrs}"
+                level="H2"
+                wrappingType="Normal"
+            />
+        </headerToolbar>
+        <columns>
+            <Column
+                id="Bukrs_EV_rCol1"
+                width="50%"
+                demandPopin="true"
+                hAlign="Begin"
+            >
+                <Text
+                    id="Bukrs_EV_rtxt1"
+                    text="{EV_LayoutModelService>bukrs}"
+                />
+            </Column>
+            <Column
+                id="Bukrs_EV_rCol2"
+                width="50%"
+            >
+                <Text
+                    id="Bukrs_EV_txt2"
+                    text="{EV_LayoutModelService>butxt}"
+                />
+            </Column>
+        </columns>
+    </Table>
+</core:FragmentDefinition>

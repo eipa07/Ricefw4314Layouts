@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+
+    <Table
+        id="parnrTable"
+        items="{ path: 'numParte_MP_Model>/', sorter: { path: '{numParte_MP_Model>Parnr}' } }"
+        growing="true"
+        growingThreshold="20"
+        visible="true"
+    
+    >
+        <headerToolbar>
+            <Title
+                id="parnrTitle"
+                text="{i18n>fragments.parnr}"
+                level="H2"
+                wrappingType="Normal"
+            />
+        </headerToolbar>
+        <columns>
+            <Column
+                id="parnrCol1"
+                width="50%"
+                demandPopin="true"
+                hAlign="Begin"
+            >
+                <Text
+                    id="parnrtxt1"
+                    text="{numParte_MP_Model>Parnr}"
+                />
+            </Column>
+            <Column
+                id="parnrCol2"
+                width="50%"
+            >
+                <Text
+                    id="parnrtxt2"
+                    text="{numParte_MP_Model>ParnrDescription}"
+                />
+            </Column>
+        </columns>
+    </Table>
+</core:FragmentDefinition>

@@ -24,7 +24,7 @@
       "env": {
         "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/Ricefw4314Layouts\"}",
         "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"path\":\"/sap\",\"url\":\"\",\"destination\":\"DS4120_UnitTest\"}]"
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"path\":\"/sap\",\"url\":\"\",\"destination\":\"DS4DEV\"}]"
       }
     }
   ]

@@ -1,0 +1,2 @@
+sap.ui.define(["report.ricefw/controller/MainView.controller"],function(e){"use strict";QUnit.module("MainView Controller");QUnit.test("I should test the MainView controller",function(n){var t=new e;t.onInit();n.ok(t)})});
+//# sourceMappingURL=MainView.controller.js.map

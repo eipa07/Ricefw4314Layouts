@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    id="lifnrFragment"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="lifnrSeldial1"
+        title="{i18n>fragments.lifnr.title}"
+        class="sapUiPopupWithPadding"
+        items="{lifnr_MP_Model>/}"
+        search="onVHSearchLifnr"
+        confirm="onVHCloseLifnr"
+        cancel="onVHCloseLifnr"
+    >
+        <StandardListItem
+            id="LifnrStdList"
+            iconDensityAware="false"
+            iconInset="false"
+            title="{lifnr_MP_Model>Lifnr}"
+            description="{lifnr_MP_Model>LifnrName}"
+        />
+    </SelectDialog>
+
+    <!--
+   
+    -->
+</core:FragmentDefinition>

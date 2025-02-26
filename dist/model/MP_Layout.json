@@ -1,0 +1,99 @@
+[
+    {
+        "label": "No. PARTE",
+        "property": "Parnr",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "DESCRIPCION",
+        "property": "description",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "DESCRIPCION EN INGLES",
+        "property": "description_en",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA1",
+        "property": "category1",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA2",
+        "property": "category2",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "FRACCION ARANCELARIA",
+        "property": "ccngn",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "FA DESPERDICIO",
+        "property": "fa_desper",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UM COMERCIAL",
+        "property": "lmein",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "UM TARIFA",
+        "property": "um_tarifa",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "TIPO MP",
+        "property": "tipo_mp",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "CATEGORIA IMMEX",
+        "property": "category_immex",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "PAIS ORIGEN",
+        "property": "country",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "COSTO UNITARIO",
+        "property": "netpr",
+        "width": 10,
+        "type": "Number"
+    },
+    {
+        "label": "PESO EN KGS",
+        "property": "menge",
+        "width": 10,
+        "type": "Number",
+        "unit": "kg"
+    },
+    {
+        "label": "REFERENCIA",
+        "property": "reference",
+        "width": 10,
+        "type": "String"
+    },
+    {
+        "label": "OBSERVACIONES",
+        "property": "observations",
+        "width": 10,
+        "type": "String"
+    }
+]

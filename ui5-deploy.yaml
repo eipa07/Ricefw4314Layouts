@@ -14,13 +14,13 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: DS4120_UnitTest
+          destination: DS4DEV
           url: http://vvhsvfds4ci.sap.cuprum.com:44300
         app:
           name: ZMM_PTPLAYOUTS
           description: RICEFW 4314 Layouts
-          package: Z_FIORI
-          transport: D42K903482
+          package: Z_FIORI_LAYOUTS
+          transport: DS4K908761
         exclude:
           - /test/
 

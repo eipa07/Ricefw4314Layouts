@@ -1,0 +1,93 @@
+[
+    {
+        "label": "Factura",
+        "property": "vbeln",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Fecha",
+        "property": "fecha",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Orden Compra",
+        "property": "ebeln",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Cliente",
+        "property": "kunnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Cuprum",
+        "property": "Parnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Figura",
+        "property": "description_parnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Fracción Arancelaria",
+        "property": "ccngn",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Fracción Arancelaria NICO",
+        "property": "xxxxxxxx",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Descripción",
+        "property": "description_parnr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Descripcion Pedimento",
+        "property": "description_ped",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Piezas",
+        "property": "fkimg",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Kilos",
+        "property": "brgew",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Libras",
+        "property": "menge",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Metros",
+        "property": "laeng",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Pies",
+        "property": "menge_ft",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "UM",
+        "property": "meabm",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Unitario USD",
+        "property": "wavwr",
+        "width": 10,
+        "type": "String"
+    },{
+        "label": "Total USD",
+        "property": "netwr",
+        "width": 10,
+        "type": "String"
+    }
+]

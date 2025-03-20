@@ -17,7 +17,7 @@ sap.ui.define([
      */
 
 
-    
+
 
     (Controller, Filter, FilterOperator, JSONModel, Spreadsheet, MessageBox) => {
         "use strict";
@@ -347,7 +347,7 @@ sap.ui.define([
                         this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_mp", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_bukrs_pt", false);
                         this.getView().getModel("requestModel").setProperty("/visible_input_numParte_mp", false);
-                        
+
 
 
                     } else if (_layout === "MP") {
@@ -375,7 +375,7 @@ sap.ui.define([
                     } else if (_layout === "PT") {
 
                         this._loadRemoteOdataServices(_tabs[2]);
-                        
+
                         this.getView().getModel("requestModel").setProperty("/tablePT", true);
                         this.getView().getModel("requestModel").setProperty("/tableMP", false);
                         this.getView().getModel("requestModel").setProperty("/tableEV", false);
@@ -507,17 +507,25 @@ sap.ui.define([
                 _oModelLayout.read(_params[0].url, {
                     filters: _params[0].filters,
                     success: function (oData, Result) {
-                        console.log(oData);
-                        let _oModel = new JSONModel();
-                        _oModel.setData(oData.results);
 
-                        if (_layout === _tabs[0]) {
-                            _that.getView().setModel(_oModel, "evLayoutModel");
-                        } else if (_layout === _tabs[1]) {
-                            _that.getView().setModel(_oModel, "mpLayoutModel");
-                        } else if (_layout === _tabs[2]) {
-                            _that.getView().setModel(_oModel, "ptLayoutModel");
+                        if (oData.results.length >= 1) {
+                            console.log(oData);
+                            let _oModel = new JSONModel();
+                            _oModel.setData(oData.results);
+
+                            if (_layout === _tabs[0]) {
+                                _that.getView().setModel(_oModel, "evLayoutModel");
+                            } else if (_layout === _tabs[1]) {
+                                _that.getView().setModel(_oModel, "mpLayoutModel");
+                            } else if (_layout === _tabs[2]) {
+                                _that.getView().setModel(_oModel, "ptLayoutModel");
+                            }
+                        } else {
+                            MessageBox.warning("No se encontraron resultados");
                         }
+
+
+
                     }, error: function (oError) {
                         console.log(oError);
                     }
@@ -565,32 +573,32 @@ sap.ui.define([
                     var _po = this.getView().getModel("requestModel").getProperty("/po");
                     var _materiales = this.getView().getModel("requestModel").getProperty("/material");
                     var _cliente = this.getView().getModel("requestModel").getProperty("/cliente");
-                    
 
-                    if(_invoices.length > 0){
-                        for(let i = 0; i < _invoices.length; i++){
+
+                    if (_invoices.length > 0) {
+                        for (let i = 0; i < _invoices.length; i++) {
                             aFilters.push(new Filter("vbeln", FilterOperator.EQ, _invoices[i].vbeln));
                         }
                     }
-                    if(_po.length > 0){
-                        for(let i = 0; i < _po.length; i++){
+                    if (_po.length > 0) {
+                        for (let i = 0; i < _po.length; i++) {
                             aFilters.push(new Filter("ebeln", FilterOperator.EQ, _po[i].ebeln));
                         }
                     }
-                    if(_materiales.length > 0){
-                        for(let i = 0; i < _materiales.length; i++){
+                    if (_materiales.length > 0) {
+                        for (let i = 0; i < _materiales.length; i++) {
                             aFilters.push(new Filter("parn", FilterOperator.EQ, _materiales[i].Parnr));
                         }
                     }
 
-                    if(_cliente){
+                    if (_cliente) {
                         aFilters.push(new Filter("kunnr", FilterOperator.EQ, _cliente));
                     }
 
 
                 } else if (_layout === _tabs[1]) {
                     _url = "/ZZ1_CDS_LAYOUT_MP(p_fecha='" + _dateParam + "')/Set?";
-                    
+
 
                     if (_requestModel.parnr) {
                         aFilters.push(new Filter("Parnr", FilterOperator.EQ, _requestModel.parnr));
@@ -611,9 +619,9 @@ sap.ui.define([
 
                 }
 
-                if(_bukrs){
-                    if(_bukrs.length > 0){
-                        for(let i = 0; i < _bukrs.length; i++){
+                if (_bukrs) {
+                    if (_bukrs.length > 0) {
+                        for (let i = 0; i < _bukrs.length; i++) {
                             aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs[i].bukrs));
                         }
                     }
@@ -724,58 +732,63 @@ sap.ui.define([
              */
             _loadRemoteOdataServices: function (_layout) {
 
-               
+
                 var _that = this;
                 //var _Virtual_ModelService = this.getView().getModel("Virtual_LayoutModel");
 
-                if(_layout === _tabs[1]){
+                if (_layout === _tabs[1]) {
                     /** MP Layout */
 
                     var _MP_ModelService = this.getView().getModel("MP_LayoutService");
 
-                    if(!this.getView().getModel("numParte_MP_Model")){
+                    if (!this.getView().getModel("numParte_MP_Model")) {
                         _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_PARNR/?", {
                             success: function (oData, Result) {
-        
-                                console.log(oData);
-                                let _oModel = new JSONModel();
-                                _oModel.setData(oData.results);
-                                _that.getView().setModel(_oModel, "numParte_MP_Model");
-        
+
+                                if (oData.results.length >= 1) {
+                                    console.log(oData);
+                                    let _oModel = new JSONModel();
+                                    _oModel.setData(oData.results);
+                                    _that.getView().setModel(_oModel, "numParte_MP_Model");
+                                } else {
+                                    MessageBox.warning("No se encontraron resultados");
+                                }
+
+
                             }, error: function (oError) {
                                 console.log(oError);
                             }
                         });
                     }
 
-                    
 
-                    if(!this.getView().getModel("lifnr_MP_Model")){
+
+                    if (!this.getView().getModel("lifnr_MP_Model")) {
                         _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_LIFNR/?", {
                             success: function (oData, Result) {
-        
+
                                 console.log(oData);
                                 let _oModel = new JSONModel();
                                 _oModel.setData(oData.results);
                                 _that.getView().setModel(_oModel, "lifnr_MP_Model");
-        
+
                             }, error: function (oError) {
                                 console.log(oError);
                             }
                         });
                     }
 
-                    
 
-                    if(!this.getView().getModel("bukrs_MP_Model")){
+
+                    if (!this.getView().getModel("bukrs_MP_Model")) {
                         _MP_ModelService.read("/ZZ1_CDS_SEARCH_HELP_BUKRS/?", {
                             success: function (oData, Result) {
-        
+
                                 console.log(oData);
                                 let _oModel = new JSONModel();
                                 _oModel.setData(oData.results);
                                 _that.getView().setModel(_oModel, "bukrs_MP_Model");
-        
+
                             }, error: function (oError) {
                                 console.log(oError);
                             }
@@ -783,20 +796,20 @@ sap.ui.define([
                     }
 
 
-                }else if(_layout === _tabs[2]){
+                } else if (_layout === _tabs[2]) {
 
 
                     var _PT_ModelService = this.getView().getModel("PT_LayoutService");
 
-                    if(!this.getView().getModel("bukrs_PT_Model")){
+                    if (!this.getView().getModel("bukrs_PT_Model")) {
                         _PT_ModelService.read("/ZZ1_CDS_SEARCH_HELP_BUKRS/?", {
                             success: function (oData, Result) {
-        
+
                                 console.log(oData);
                                 let _oModel = new JSONModel();
                                 _oModel.setData(oData.results);
                                 _that.getView().setModel(_oModel, "bukrs_PT_Model");
-        
+
                             }, error: function (oError) {
                                 console.log(oError);
                             }
@@ -806,7 +819,7 @@ sap.ui.define([
                 }
 
 
-                
+
 
 
             },
@@ -835,11 +848,11 @@ sap.ui.define([
 
             },
 
-            invoicesSelectionFinish: function(oEvent){
+            invoicesSelectionFinish: function (oEvent) {
 
                 var selectedItems = oEvent.getParameter("selectedItems");
-                var _items =[];
-                
+                var _items = [];
+
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
@@ -853,11 +866,11 @@ sap.ui.define([
 
             },
 
-            poSelectionFinish: function(oEvent){
+            poSelectionFinish: function (oEvent) {
 
                 var selectedItems = oEvent.getParameter("selectedItems");
-                var _items =[];
-                
+                var _items = [];
+
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
@@ -871,11 +884,11 @@ sap.ui.define([
 
             },
 
-            materialSelectionFinish: function(oEvent){
+            materialSelectionFinish: function (oEvent) {
 
                 var selectedItems = oEvent.getParameter("selectedItems");
-                var _items =[];
-                
+                var _items = [];
+
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
@@ -889,11 +902,11 @@ sap.ui.define([
 
             },
 
-            bukrsSelectionFinish: function(oEvent){
+            bukrsSelectionFinish: function (oEvent) {
 
                 var selectedItems = oEvent.getParameter("selectedItems");
-                var _items =[];
-                
+                var _items = [];
+
                 if (selectedItems.length > 0) {
                     selectedItems.forEach((element) =>
                         _items.push({
@@ -907,11 +920,11 @@ sap.ui.define([
 
             },
 
-            clearAllFilters: function(_tableID) {
+            clearAllFilters: function (_tableID) {
                 const oTable = this.byId(_tableID);
-    
-                
-    
+
+
+
                 const aColumns = oTable.getColumns();
                 for (let i = 0; i < aColumns.length; i++) {
                     oTable.filter(aColumns[i], null);

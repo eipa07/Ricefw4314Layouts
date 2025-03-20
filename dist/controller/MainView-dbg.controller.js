@@ -46,7 +46,7 @@ sap.ui.define([
                     "cliente": "",
                     "parnr": "", // Numero de parte
                     "lifnr": "", // Proveedor
-                    "bukrs": "",
+                    "bukrs": [],
                     "visible_input_invoices": true,
                     "visible_input_matnr_ev": true,
                     "visible_input_matnr_pt": false,
@@ -578,17 +578,13 @@ sap.ui.define([
                         }
                     }
                     if(_materiales.length > 0){
-                        for(let i = 0; i < _po.length; i++){
+                        for(let i = 0; i < _materiales.length; i++){
                             aFilters.push(new Filter("parn", FilterOperator.EQ, _materiales[i].Parnr));
                         }
                     }
 
                     if(_cliente){
                         aFilters.push(new Filter("kunnr", FilterOperator.EQ, _cliente));
-                    }
-
-                    if(_bukrs){
-                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
                     }
 
 
@@ -603,10 +599,6 @@ sap.ui.define([
                         aFilters.push(new Filter("Lifnr", FilterOperator.EQ, _requestModel.lifnr));
                     }
 
-                    if(_bukrs){
-                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
-                    }
-
 
                 } else if (_layout === _tabs[2]) {
                     _url = "/ZZ1_CDS_LAYOUT_PT(p_fecha='" + _dateParam + "')/Set?";
@@ -617,10 +609,14 @@ sap.ui.define([
                         );
                     }
 
-                    if(_bukrs){
-                        aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs));
-                    }
+                }
 
+                if(_bukrs){
+                    if(_bukrs.length > 0){
+                        for(let i = 0; i < _bukrs.length; i++){
+                            aFilters.push(new Filter("Bukrs", FilterOperator.EQ, _bukrs[i].bukrs));
+                        }
+                    }
                 }
 
                 _params.push([{
@@ -891,6 +887,35 @@ sap.ui.define([
                 this.getView().getModel("requestModel").setProperty("/material", []);
                 this.getView().getModel("requestModel").setProperty("/material", _items);
 
+            },
+
+            bukrsSelectionFinish: function(oEvent){
+
+                var selectedItems = oEvent.getParameter("selectedItems");
+                var _items =[];
+                
+                if (selectedItems.length > 0) {
+                    selectedItems.forEach((element) =>
+                        _items.push({
+                            "bukrs": element.getProperty("key")
+                        })
+                    );
+                }
+
+                this.getView().getModel("requestModel").setProperty("/bukrs", []);
+                this.getView().getModel("requestModel").setProperty("/bukrs", _items);
+
+            },
+
+            clearAllFilters: function(_tableID) {
+                const oTable = this.byId(_tableID);
+    
+                
+    
+                const aColumns = oTable.getColumns();
+                for (let i = 0; i < aColumns.length; i++) {
+                    oTable.filter(aColumns[i], null);
+                }
             },
 
 

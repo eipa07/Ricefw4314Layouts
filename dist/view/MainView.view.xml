@@ -273,7 +273,7 @@
                                 visibleInFilterBar="{requestModel>/visible_input_bukrs_ev}"
                             >
                                 <fb:control>
-                                    <Input
+                                    <!-- <Input
                                         id="MainView_Input_BukrsVH_EV"
                                         value="{requestModel>/bukrs_ev}"
                                         placeholder="Buscar Sociedad"
@@ -290,7 +290,23 @@
                                                 text="{EV_LayoutService>butxt}"
                                             />
                                         </suggestionItems>
-                                    </Input>
+                                    </Input> -->
+                                    <MultiComboBox
+                                        id="MainView_Input_BukrsVH_EV"
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="bukrsSelectionFinish"
+                                        placeholder="{i18n>mainview.combobox.bukrs.placeholder}"
+                                        width="auto"
+                                        items="{
+                                        path: 'EV_LayoutService>/ZZ1_CDS_SEARCH_HELP_BUKRS',
+                                        sorter: { path: 'bukrs' }}"
+                                    >
+                                        <core:Item
+                                            id="Item_bukrs_EV"
+                                            key="{EV_LayoutService>bukrs}"
+                                            text="{EV_LayoutService>bukrs} - {EV_LayoutService>butxt}"
+                                        />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
 
@@ -303,7 +319,7 @@
                                 visibleInFilterBar="{requestModel>/visible_input_bukrs_mp}"
                             >
                                 <fb:control>
-                                    <Input
+                                    <!-- <Input
                                         id="MainView_Input_BukrsVH_MP"
                                         value="{requestModel>/bukrs_mp}"
                                         placeholder="Buscar Sociedad"
@@ -320,7 +336,24 @@
                                                 text="{bukrs_MP_Model>butxt}"
                                             />
                                         </suggestionItems>
-                                    </Input>
+                                    </Input> -->
+
+                                    <MultiComboBox
+                                        id="MainView_Input_BukrsVH_MP"
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="bukrsSelectionFinish"
+                                        placeholder="{i18n>mainview.combobox.bukrs.placeholder}"
+                                        width="auto"
+                                        items="{
+                                        path: 'bukrs_MP_Model>/',
+                                        sorter: { path: 'bukrs_MP_Model>bukrs' }}"
+                                    >
+                                        <core:Item
+                                            id="Item_bukrs_MP"
+                                            key="{bukrs_MP_Model>bukrs}"
+                                            text="{bukrs_MP_Model>bukrs} - {bukrs_MP_Model>butxt}"
+                                        />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
 
@@ -333,7 +366,7 @@
                                 visibleInFilterBar="{requestModel>/visible_input_bukrs_pt}"
                             >
                                 <fb:control>
-                                    <Input
+                                    <!-- <Input
                                         id="MainView_Input_BukrsVH_PT"
                                         value="{requestModel>/bukrs_pt}"
                                         placeholder="Buscar Sociedad"
@@ -350,7 +383,24 @@
                                                 text="{bukrs_PT_Model>butxt}"
                                             />
                                         </suggestionItems>
-                                    </Input>
+                                    </Input> -->
+
+                                    <MultiComboBox
+                                        id="MainView_Input_BukrsVH_PT"
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="bukrsSelectionFinish"
+                                        placeholder="{i18n>mainview.combobox.bukrs.placeholder}"
+                                        width="auto"
+                                        items="{
+                                        path: 'bukrs_PT_Model>/',
+                                        sorter: { path: 'bukrs_PT_Model>bukrs' }}"
+                                    >
+                                        <core:Item
+                                            id="Item_bukrs_PT"
+                                            key="{bukrs_PT_Model>bukrs}"
+                                            text="{bukrs_PT_Model>bukrs} - {bukrs_PT_Model>butxt}"
+                                        />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
 
@@ -382,6 +432,7 @@
                             rows="{evLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
+                            enableCellFilter="true"
                         >
                             <table:extension>
                                 <OverflowToolbar
@@ -391,6 +442,13 @@
                                     <ToolbarSpacer
                                         id="MainView_ToolbarSpacer_clear_01"
                                     />
+                                    <Button
+                                    id="MainView_Button_Clear_Filters_VE"
+                                        text="Borrar Filtros en columnas"
+                                        tooltip="Clear all filters"
+                                        press="clearAllFilters('MainView_Table_01')"
+                                        type="Transparent"
+                                        />
                                     <Button
                                         id="MainView_Button_clear_01"
                                         text="Limpiar tabla"
@@ -410,6 +468,10 @@
                                     id="MainView_Column_01"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="vbeln"
+                                    filterProperty="vbeln"
+                                    showSortMenuEntry="true"
+                                    
                                 >
                                     <Label
                                         id="MainView_Label_01"
@@ -428,6 +490,8 @@
                                     id="MainView_Column_02"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fecha"
+                                    filterProperty="fecha"
                                 >
                                     <Label
                                         id="MainView_Label_02"
@@ -446,6 +510,8 @@
                                     id="MainView_Column_03"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="ebeln"
+                                    filterProperty="ebeln"
                                 >
                                     <Label
                                         id="MainView_Label_03"
@@ -464,6 +530,8 @@
                                     id="MainView_Column_04"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="kunnr"
+                                    filterProperty="kunnr"
                                 >
                                     <Label
                                         id="MainView_Label_04"
@@ -482,6 +550,8 @@
                                     id="MainView_Column_05"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="parn"
+                                    filterProperty="parn"
                                 >
                                     <Label
                                         id="MainView_Label_05"
@@ -500,6 +570,8 @@
                                     id="MainView_Column_06"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="ccngn"
+                                    filterProperty="ccngn"
                                 >
                                     <Label
                                         id="MainView_Label_06"
@@ -519,6 +591,8 @@
                                     id="MainView_Column_07"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description_parnr"
+                                    filterProperty="description_parnr"
                                 >
                                     <Label
                                         id="MainView_Label_07"
@@ -537,6 +611,8 @@
                                     id="MainView_Column_08"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description_ped"
+                                    filterProperty="description_ped"
                                 >
                                     <Label
                                         id="MainView_Label_08"
@@ -556,6 +632,8 @@
                                     id="MainView_Column_09"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fkimg"
+                                    filterProperty="fkimg"
                                 >
                                     <Label
                                         id="MainView_Label_09"
@@ -574,6 +652,8 @@
                                     id="MainView_Column_10"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="brgew"
+                                    filterProperty="brgew"
                                 >
                                     <Label
                                         id="MainView_Label_10"
@@ -592,6 +672,8 @@
                                     id="MainView_Column_11"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="menge"
+                                    filterProperty="menge"
                                 >
                                     <Label
                                         id="MainView_Label_11"
@@ -610,6 +692,8 @@
                                     id="MainView_Column_12"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="laeng"
+                                    filterProperty="laeng"
                                 >
                                     <Label
                                         id="MainView_Label_12"
@@ -628,6 +712,8 @@
                                     id="MainView_Column_13"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="menge_ft"
+                                    filterProperty="menge_ft"
                                 >
                                     <Label
                                         id="MainView_Label_13"
@@ -646,6 +732,8 @@
                                     id="MainView_Column_14"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="meins"
+                                    filterProperty="meins"
                                 >
                                     <Label
                                         id="MainView_Label_14"
@@ -664,6 +752,8 @@
                                     id="MainView_Column_15"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="wavwr"
+                                    filterProperty="wavwr"
                                 >
                                     <Label
                                         id="MainView_Label_15"
@@ -682,6 +772,8 @@
                                     id="MainView_Column_16"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="netwr"
+                                    filterProperty="netwr"
                                 >
                                     <Label
                                         id="MainView_Label_16"
@@ -711,6 +803,7 @@
                             rows="{mpLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
+                            enableCellFilter="true"
                         >
                             <table:extension>
                                 <OverflowToolbar
@@ -739,6 +832,8 @@
                                     id="MainView_Column_17"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="Parnr"
+                                    filterProperty="Parnr"
                                 >
                                     <Label
                                         id="MainView_Label_17"
@@ -756,6 +851,8 @@
                                     id="MainView_Column_18"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description"
+                                    filterProperty="description"
                                 >
                                     <Label
                                         id="MainView_Label_18"
@@ -773,6 +870,8 @@
                                     id="MainView_Column_19"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description_en"
+                                    filterProperty="description_en"
                                 >
                                     <Label
                                         id="MainView_Label_19"
@@ -792,6 +891,8 @@
                                     id="MainView_Column_20"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="category1"
+                                    filterProperty="category1"
                                 >
                                     <Label
                                         id="MainView_Label_20"
@@ -809,6 +910,8 @@
                                     id="MainView_Column_21"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="category2"
+                                    filterProperty="category2"
                                 >
                                     <Label
                                         id="MainView_Label_21"
@@ -826,6 +929,8 @@
                                     id="MainView_Column_22"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="ccngn"
+                                    filterProperty="ccngn"
                                 >
                                     <Label
                                         id="MainView_Label_22"
@@ -843,6 +948,8 @@
                                     id="MainView_Column_23"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fa_desper"
+                                    filterProperty="fa_desper"
                                 >
                                     <Label
                                         id="MainView_Label_23"
@@ -860,6 +967,8 @@
                                     id="MainView_Column_24"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="lmein"
+                                    filterProperty="lmein"
                                 >
                                     <Label
                                         id="MainView_Label_24"
@@ -877,6 +986,8 @@
                                     id="MainView_Column_25"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="um_tarifa"
+                                    filterProperty="um_tarifa"
                                 >
                                     <Label
                                         id="MainView_Label_25"
@@ -894,6 +1005,8 @@
                                     id="MainView_Column_26"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="tipo_mp"
+                                    filterProperty="tipo_mp"
                                 >
                                     <Label
                                         id="MainView_Label_26"
@@ -911,6 +1024,8 @@
                                     id="MainView_Column_27"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="category_immex"
+                                    filterProperty="category_immex"
                                 >
                                     <Label
                                         id="MainView_Label_27"
@@ -928,6 +1043,8 @@
                                     id="MainView_Column_28"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="country"
+                                    filterProperty="country"
                                 >
                                     <Label
                                         id="MainView_Label_28"
@@ -945,6 +1062,8 @@
                                     id="MainView_Column_29"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="netpr"
+                                    filterProperty="netpr"
                                 >
                                     <Label
                                         id="MainView_Label_29"
@@ -962,6 +1081,8 @@
                                     id="MainView_Column_30"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="menge"
+                                    filterProperty="menge"
                                 >
                                     <Label
                                         id="MainView_Label_30"
@@ -979,6 +1100,8 @@
                                     id="MainView_Column_31"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="reference"
+                                    filterProperty="reference"
                                 >
                                     <Label
                                         id="MainView_Label_31"
@@ -996,6 +1119,8 @@
                                     id="MainView_Column_32"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="observations"
+                                    filterProperty="observations"
                                 >
                                     <Label
                                         id="MainView_Label_32"
@@ -1024,6 +1149,7 @@
                             rows="{ptLayoutModel>/}"
                             selectionMode="None"
                             ariaLabelledBy="title"
+                            enableCellFilter="true"
                         >
                             <table:extension>
                                 <OverflowToolbar
@@ -1052,6 +1178,8 @@
                                     id="MainView_Column_33"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="Parnr"
+                                    filterProperty="Parnr"
                                 >
                                     <Label
                                         id="MainView_Label_33"
@@ -1069,6 +1197,8 @@
                                     id="MainView_Column_34"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description"
+                                    filterProperty="description"
                                 >
                                     <Label
                                         id="MainView_Label_34"
@@ -1086,6 +1216,8 @@
                                     id="MainView_Column_35"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="description_en"
+                                    filterProperty="description_en"
                                 >
                                     <Label
                                         id="MainView_Label_35"
@@ -1105,6 +1237,8 @@
                                     id="MainView_Column_36"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="category1"
+                                    filterProperty="category1"
                                 >
                                     <Label
                                         id="MainView_Label_36"
@@ -1122,6 +1256,8 @@
                                     id="MainView_Column_37"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="ccngn"
+                                    filterProperty="ccngn"
                                 >
                                     <Label
                                         id="MainView_Label_37"
@@ -1141,6 +1277,8 @@
                                     id="MainView_Column_38"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fa_desper"
+                                    filterProperty="fa_desper"
                                 >
                                     <Label
                                         id="MainView_Label_38"
@@ -1158,6 +1296,8 @@
                                     id="MainView_Column_39"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="lmein"
+                                    filterProperty="lmein"
                                 >
                                     <Label
                                         id="MainView_Label_39"
@@ -1175,6 +1315,8 @@
                                     id="MainView_Column_40"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="um_tarifa"
+                                    filterProperty="um_tarifa"
                                 >
                                     <Label
                                         id="MainView_Label_40"
@@ -1192,6 +1334,8 @@
                                     id="MainView_Column_41"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="country"
+                                    filterProperty="country"
                                 >
                                     <Label
                                         id="MainView_Label_41"
@@ -1209,6 +1353,8 @@
                                     id="MainView_Column_42"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="netpr"
+                                    filterProperty="netpr"
                                 >
                                     <Label
                                         id="MainView_Label_42"
@@ -1226,6 +1372,8 @@
                                     id="MainView_Column_43"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="menge"
+                                    filterProperty="menge"
                                 >
                                     <Label
                                         id="MainView_Label_43"
@@ -1243,6 +1391,8 @@
                                     id="MainView_Column_44"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="reference"
+                                    filterProperty="reference"
                                 >
                                     <Label
                                         id="MainView_Label_44"
@@ -1260,6 +1410,8 @@
                                     id="MainView_Column_45"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="observations"
+                                    filterProperty="observations"
                                 >
                                     <Label
                                         id="MainView_Label_45"
@@ -1277,6 +1429,8 @@
                                     id="MainView_Column_46"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fecha_es"
+                                    filterProperty="fecha_es"
                                 >
                                     <Label
                                         id="MainView_Label_46"
@@ -1294,6 +1448,8 @@
                                     id="MainView_Column_47"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="comp_parnr"
+                                    filterProperty="comp_parnr"
                                 >
                                     <Label
                                         id="MainView_Label_47"
@@ -1313,6 +1469,8 @@
                                     id="MainView_Column_48"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="comp_unid"
+                                    filterProperty="comp_unid"
                                 >
                                     <Label
                                         id="MainView_Label_48"
@@ -1332,6 +1490,8 @@
                                     id="MainView_Column_49"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="incorp_cant"
+                                    filterProperty="incorp_cant"
                                 >
                                     <Label
                                         id="MainView_Label_49"
@@ -1351,6 +1511,8 @@
                                     id="MainView_Column_50"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="merma_Cant"
+                                    filterProperty="merma_Cant"
                                 >
                                     <Label
                                         id="MainView_Label_50"
@@ -1368,6 +1530,8 @@
                                     id="MainView_Column_51"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="desper_Cant"
+                                    filterProperty="desper_Cant"
                                 >
                                     <Label
                                         id="MainView_Label_52"
@@ -1387,6 +1551,8 @@
                                     id="MainView_Column_53"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="fdesde"
+                                    filterProperty="fdesde"
                                 >
                                     <Label
                                         id="MainView_Label_53"
@@ -1404,6 +1570,8 @@
                                     id="MainView_Column_54"
                                     width="8rem"
                                     hAlign="Center"
+                                    sortProperty="f_hasta"
+                                    filterProperty="f_hasta"
                                 >
                                     <Label
                                         id="MainView_Label_54"
